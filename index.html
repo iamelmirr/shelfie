@@ -27,25 +27,75 @@
     <header>
 
         <a href="/">
-            <img src="./assets/images/lightlogo.png" alt="Shelfie">
+            <img class="header-logo" src="./assets/images/lightlogo2.png" alt="Shelfie">
         </a>
 
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/">Books</a>
-                </li>
-            </ul>
+        <nav class="main-nav">
+           
+                
+                    <a class="header-btn home-btn" href="/">Home</a>
+                
+                
+                    <a class="header-btn" href="/">Books</a>
+                
+            
         </nav>
 
-        <button>
-            <i></i>
+
+        <div class="header-part">
+        <button class="themebtn">
+            <img class="themeimg" src="./assets/images/moonblack.svg" alt="darkmode">
+            <!-- <img src="./assets/images/lightmode.svg" alt="lightmode"> -->
         </button>
 
+        <a class="savedlink" href="/">
+            <img class="savedimg" src="./assets/images/bookmarkwhite.svg" alt="savedbtn">
+            <span class="span">Saved Books</span>
+        </a>
+    </div>
+
     </header>
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+            <div class="banner-card">
+                <h1>Your desired book?</h1>
+                <div class="search-wrap">
+                    <img class="searchbookicon" src="./assets/images/book-opendark.svg" alt="openbook">
+                    <input type="text" name="book-search" id="search-input" placeholder="Search books...">
+                    <button class="search-btn">
+                        <img src="./assets/images/searchdark.svg" alt="searchicon">
+                    </button>
+                </div>
+                <p>Search any book e.g: Star Wars, WWII, Hamlet.</p>
+            </div>
+        </section>
+    
+
+
+    <!-- TAB BAR -->
+
+    <section class="tab-section">
+        <div class="container">
+            <div class="tab-list">
+                <button>Fiction</button>
+                <button>Non Fiction</button>
+                <button>Children</button>
+                <button>Popular</button>
+                <button>Classics</button>
+            </div>
+
+            <div class="tab-panel-1"></div>
+            <div class="tab-panel-2"></div>
+            <div class="tab-panel-3"></div>
+            <div class="tab-panel-4"></div>
+            <div class="tab-panel-5"></div>
+        </div>
+    </section>
+</main>
     
 </body>
 </html>
