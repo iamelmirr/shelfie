@@ -1,3 +1,89 @@
+:root {
+
+      /* Light theme */
+  --light-background: hsl(210, 20%, 98%);
+  --light-on-background: hsl(210, 15%, 25%);
+  --light-on-background-variant: hsl(210, 10%, 40%);
+  --light-primary: hsl(212, 70%, 50%);
+  --light-primary-hover: hsl(212, 65%, 45%);
+  --light-primary-container: hsl(212, 90%, 95%);
+  --light-error: hsl(0, 75%, 55%);
+  --light-active-indicator: hsl(212, 80%, 85%);
+  --light-image-background: hsl(210, 15%, 85%);
+  --light-badge-btn: hsl(30, 100%, 95%);
+  --light-on-badge-btn: hsl(30, 20%, 25%);
+  --light-outline: hsl(210, 15%, 80%);
+  --light-input-outline: hsl(210, 10%, 70%);
+  --light-input-outline-hover: hsl(210, 10%, 50%);
+  --light-alpha-10: hsla(210, 15%, 25%, 0.1);
+  --light-alpha-20: hsla(210, 15%, 25%, 0.2);
+
+  /* Dark theme */
+  --dark-background: hsl(210, 20%, 12%);
+  --dark-on-background: hsl(210, 15%, 85%);
+  --dark-on-background-variant: hsl(210, 10%, 75%);
+  --dark-primary: hsl(212, 70%, 60%);
+  --dark-primary-hover: hsl(212, 65%, 55%);
+  --dark-primary-container: hsl(210, 30%, 20%);
+  --dark-error: hsl(0, 70%, 65%);
+  --dark-active-indicator: hsl(212, 60%, 40%);
+  --dark-image-background: hsl(210, 10%, 20%);
+  --dark-badge-btn: hsl(30, 30%, 20%);
+  --dark-on-badge-btn: hsl(30, 15%, 85%);
+  --dark-outline: hsl(210, 10%, 40%);
+  --dark-input-outline: hsl(210, 10%, 50%);
+  --dark-input-outline-hover: hsl(210, 15%, 60%);
+  --dark-alpha-10: hsla(210, 15%, 85%, 0.1);
+  --dark-alpha-20: hsla(210, 15%, 85%, 0.2);
+
+
+}
+
+
+[data-theme="light"] {
+    color-scheme: light;
+  
+    --background: var(--light-background);
+    --on-background: var(--light-on-background);
+    --on-background-variant: var(--light-on-background-variant);
+    --primary: var(--light-primary);
+    --primary-hover: var(--light-primary-hover);
+    --primary-container: var(--light-primary-container);
+    --error: var(--light-error);
+    --active-indicator: var(--light-active-indicator);
+    --image-background: var(--light-image-background);
+    --badge-btn: var(--light-badge-btn);
+    --on-badge-btn: var(--light-on-badge-btn);
+    --outline: var(--light-outline);
+    --input-outline: var(--light-input-outline);
+    --input-outline-hover: var(--light-input-outline-hover);
+    --alpha-10: var(--light-alpha-10);
+    --alpha-20: var(--light-alpha-20);
+  }
+  
+  [data-theme="dark"] {
+    color-scheme: dark;
+  
+    --background: var(--dark-background);
+    --on-background: var(--dark-on-background);
+    --on-background-variant: var(--dark-on-background-variant);
+    --primary: var(--dark-primary);
+    --primary-hover: var(--dark-primary-hover);
+    --primary-container: var(--dark-primary-container);
+    --error: var(--dark-error);
+    --active-indicator: var(--dark-active-indicator);
+    --image-background: var(--dark-image-background);
+    --badge-btn: var(--dark-badge-btn);
+    --on-badge-btn: var(--dark-on-badge-btn);
+    --outline: var(--dark-outline);
+    --input-outline: var(--dark-input-outline);
+    --input-outline-hover: var(--dark-input-outline-hover);
+    --alpha-10: var(--dark-alpha-10);
+    --alpha-20: var(--dark-alpha-20);
+  }
+
+
+
 *{
     margin: 0;
     padding: 0;
@@ -24,7 +110,9 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background: hsl(210, 20%, 98%)
+    background: var(--background);
+    color: var(--on-background);
+
 }
 
 
@@ -68,10 +156,11 @@ header {
     
     position: absolute;
     content: '';
-    background: blue;
-    height: 2.3px;
-    border-radius: 25px;
-    bottom: -1px;
+    background: var(--primary);
+    height: 3px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    bottom: 0px;
     left: 39%;
     
     width: 35px;
@@ -105,7 +194,7 @@ header {
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    background: rgb(98, 98, 255);
+    background: var(--primary);
     color: white;
     border-radius: 5px;
     padding: 0.8rem 1.7rem;
@@ -205,7 +294,7 @@ main {
 .search-btn {
     position: absolute;
     display: grid;
-    background: rgb(36, 97, 189);
+    background: var(--primary);
     border: none;
     border-radius: 5px;
     width: 100px;
@@ -256,9 +345,22 @@ main {
     width: 20%;
     font-size: 1.5rem;
     font-weight: 500;
+    position: relative;
 
 }
 
+
+.tab-btn.active::after {
+    content: "";
+    position: absolute;
+    background-color: var(--primary);
+    height: 1.5px;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    left: 0;
+    bottom: 0;
+}
 
 
 
@@ -329,7 +431,7 @@ main {
 }
 
 .tag-div a {
-    background: rgb(150, 149, 238);
+    background: rgb(189, 228, 241);
     padding: 1.2rem;
     font-size: 1.35rem;
     align-items: center;
@@ -343,7 +445,7 @@ footer {
     display: flex;
     height: 70px;
     padding: 1rem 4rem;
-    border-top: 1px solid rgb(204, 208, 212);
+    border-top: 1px solid var(--outline);
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;

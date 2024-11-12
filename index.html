@@ -17,7 +17,12 @@
         rel="stylesheet">
 
 
-    <link rel="stylesheet" href="./assets/css/styles.css">    
+    <link rel="stylesheet" href="./assets/css/styles.css">   
+    
+    
+    <script src="./assets/js/theme.js"></script>
+    <script type="module" src="./assets/js/api.js"></script>
+
 
 </head>
 <body>
@@ -43,7 +48,7 @@
 
 
         <div class="header-part">
-        <button class="themebtn">
+        <button class="themebtn" theme-btn>
             <img class="themeimg" src="./assets/images/moonblack.svg" alt="darkmode">
             <!-- <img src="./assets/images/lightmode.svg" alt="lightmode"> -->
         </button>
@@ -62,7 +67,7 @@
 
         <section class="hero">
             <div class="banner-card">
-                <h1>Your desired book?</h1>
+                <h1>Want to read?</h1>
                 <div class="search-wrap">
                     <img class="searchbookicon" src="./assets/images/book-opendark.svg" alt="openbook">
                     <input type="text" name="book-search" id="search-input" placeholder="Search books...">
@@ -81,14 +86,14 @@
     <section class="tab-section">
         <div class="container">
             <div class="tab-list">
-                <button>Fiction</button>
-                <button>Comedy</button>
-                <button>Children</button>
-                <button>Popular</button>
-                <button>Classics</button>
+                <button class="tab-btn active" id="panel-1" data-tab-btn>Fiction</button>
+                <button class="tab-btn" id="panel-2" data-tab-btn>Comedy</button>
+                <button class="tab-btn" id="panel-3" data-tab-btn>Children</button>
+                <button class="tab-btn" id="panel-4" data-tab-btn>Popular</button>
+                <button class="tab-btn" id="panel-5" data-tab-btn>Classics</button>
             </div>
 
-            <div class="tab-panel-1">
+            <div class="tab-panel-1 panel-1" category="fiction" data-panel="panel-1" tab-panel>
                 
                 <div class="card">
 
@@ -124,10 +129,10 @@
                   </div>
 
             </div>
-            <div class="tab-panel-2"></div>
-            <div class="tab-panel-3"></div>
-            <div class="tab-panel-4"></div>
-            <div class="tab-panel-5"></div>
+            <div class="tab-panel-2" category="comedy" data-panel="panel-2" tab-panel>Panel 2</div>
+            <div class="tab-panel-3" category="children" data-panel="panel-3" tab-panel>Panel 3</div>
+            <div class="tab-panel-4" category="popular" data-panel="panel-4" tab-panel>Panel 4</div>
+            <div class="tab-panel-5" category="classics" data-panel="panel-5" tab-panel>Panel 5</div>
         </div>
     </section>
     <section class="slider-section">
@@ -350,5 +355,10 @@
     <p>Powered by Google Books API</p>
 </footer>
     
+
+
+
+
+<script type="module" src="./assets/js/home.js"></script>
 </body>
 </html>
