@@ -74,7 +74,7 @@ $tabBtns.forEach((btn) => {
 
         const activePanel = document.querySelector(`[data-panel="${panelId}"]`)
 
-        activePanel.style.display = "block"
+        activePanel.style.display = "grid"
     })
 })
 

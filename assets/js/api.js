@@ -1,11 +1,10 @@
 "use strict"
 
 
-
+import API_KEY from "./config"
 
 const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 
-const API_KEY = "AIzaSyAUcrwbM9LKSkFFYfrmFp8U6aIDKSKJc6E" 
 
 export async function tabBooks(category) {
     
@@ -23,7 +22,7 @@ export async function tabBooks(category) {
         return {
             title: book.volumeInfo.title,
             authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
-            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "default-img.png",
+            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
             id: book.volumeInfo.id
         }
         

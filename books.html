@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelfie - Reading made easy.</title>
+
+    <link rel="shortcut icon" href="./scuticon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./assets/css/styles.css">   
+    
+    
+    <script src="./assets/js/theme.js"></script>
+    <script type="module" src="./assets/js/api.js"></script>
+</head>
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="/">
+            <img class="header-logo" src="./assets/images/lightlogo2.png" alt="Shelfie">
+        </a>
+
+        <nav class="main-nav">
+           
+                
+                    <a class="header-btn" href="/">Home</a>
+                
+                
+                    <a class="header-btn home-btn" href="/">Books</a>
+                
+            
+        </nav>
+
+
+        <div class="header-part">
+        <button class="themebtn" theme-btn>
+            <img class="themeimg" src="./assets/images/moonblack.svg" alt="darkmode">
+            <!-- <img src="./assets/images/lightmode.svg" alt="lightmode"> -->
+        </button>
+
+        <a class="savedlink" href="/">
+            <img class="savedimg" src="./assets/images/bookmarkwhite.svg" alt="savedbtn">
+            <span class="span">Saved Books</span>
+        </a>
+    </div>
+
+    </header>
+
+    <main>
+        <article class="article">
+            <div class="filter-bar">
+                <div class="title-wrapper">
+                    <span>FI</span>
+                    <p>Filters</p>
+                </div>
+                <div class="filter-content">
+                    <div class="search-wrapper">
+                        <div class="input-content">
+                            <label for="search" class="">Search</label>
+                            <input type="search" name="search" placeholder="Search books">
+                        </div>
+                    </div>
+                    <div class="filter-part">
+                        
+                    </div>
+                </div>
+                <div class="filter-actions"></div>
+            </div>
+            <div class="books-container">
+
+            </div>
+        </article>
+    </main>
+    
+</body>
+</html>
