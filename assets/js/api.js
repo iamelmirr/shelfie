@@ -5,7 +5,7 @@
 
 const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 
-const API_KEY = "AIzaSyAUcrwbM9LKSkFFYfrmFp8U6aIDKSKJc6E" 
+const API_KEY = "" 
 
 export async function tabBooks(category) {
     
