@@ -16,11 +16,11 @@
 
     <link rel="stylesheet" href="./assets/css/styles.css">   
     
-    
+    <script type="module" src="./assets/js/books.js"></script>  
     <script src="./assets/js/theme.js"></script>
     <script type="module" src="./assets/js/api.js"></script>
 </head>
-<body>
+<body class="books-body">
 
     <!-- HEADER -->
 
@@ -59,7 +59,7 @@
     <main>
         <article class="article">
             <div class="filter-bar">
-                <div class="title-wrapper">
+                <div class="filter-title-wrapper">
                     <span>FI</span>
                     <p>Filters</p>
                 </div>
@@ -73,34 +73,34 @@
 
 
                     <div class="filter-part">
-                        <button class="filter-part-btn">
+                        <button class="filter-part-btn" aria-expanded="true">
                             <i>BT</i>
                             <p>Book type</p>
                             <i>AD</i>
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter option">Book</label>
-                                <label class="filter-chip filter option">Ebook</label>
+                                <label class="filter-chip filter-option">Book</label>
+                                <label class="filter-chip filter-option">Ebook</label>
                             </div>
                         </div>
                     </div>
 
 
                     <div class="filter-part">
-                        <button class="filter-part-btn">
+                        <button class="filter-part-btn" aria-expanded="true">
                             <i>BT</i>
                             <p>Language</p>
                             <i>AD</i>
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter option">English</label>
-                                <label class="filter-chip filter option">Spanish</label>
-                                <label class="filter-chip filter option">German</label>
-                                <label class="filter-chip filter option">Chinese</label>
-                                <label class="filter-chip filter option">Japanese</label>
-                                <label class="filter-chip filter option">Russian</label>
+                                <label class="filter-chip filter-option">English</label>
+                                <label class="filter-chip filter-option">Spanish</label>
+                                <label class="filter-chip filter-option">German</label>
+                                <label class="filter-chip filter-option">Chinese</label>
+                                <label class="filter-chip filter-option">Japanese</label>
+                                <label class="filter-chip filter-option">Russian</label>
 
                             </div>
                         </div>
@@ -108,49 +108,50 @@
 
 
                     <div class="filter-part">
-                        <button class="filter-part-btn">
+                        <button class="filter-part-btn" aria-expanded="true">
                             <i>BT</i>
                             <p>Availability</p>
                             <i>AD</i>
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter option">Available</label>
+                                <label class="filter-chip filter-option">Available</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="filter-part">
-                        <button class="filter-part-btn">
+                        <button class="filter-part-btn" aria-expanded="true">
                             <i>BT</i>
                             <p>Print type</p>
                             <i>AD</i>
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter option">Physical book</label>
-                                <label class="filter-chip filter option">Magazine</label>
-                                <label class="filter-chip filter option">All</label>
+                                <label
+                                 class="filter-chip filter-option">Physical book</label>
+                                <label class="filter-chip filter-option">Magazine</label>
+                                <label class="filter-chip filter-option">All</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="filter-part">
-                        <button class="filter-part-btn">
+                        <button class="filter-part-btn" aria-expanded="true">
                             <i>S</i>
                             <p>Ratings</p>
                             <i>AD</i>
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter option">1+</label>
-                                <label class="filter-chip filter option">1.5+</label>
-                                <label class="filter-chip filter option">2+</label>
-                                <label class="filter-chip filter option">2.5+</label>
-                                <label class="filter-chip filter option">3+</label>
-                                <label class="filter-chip filter option">3.5+</label>
-                                <label class="filter-chip filter option">4+</label>
-                                <label class="filter-chip filter option">4.5+</label>
+                                <label class="filter-chip filter-option">1+</label>
+                                <label class="filter-chip filter-option">1.5+</label>
+                                <label class="filter-chip filter-option">2+</label>
+                                <label class="filter-chip filter-option">2.5+</label>
+                                <label class="filter-chip filter-option">3+</label>
+                                <label class="filter-chip filter-option">3.5+</label>
+                                <label class="filter-chip filter-option">4+</label>
+                                <label class="filter-chip filter-option">4.5+</label>
                             </div>
                         </div>
                     </div>
@@ -208,6 +209,6 @@
     </footer>    
     
 
-<script type="module" src="./assets/js/books.js"></script>    
+  
 </body>
 </html>

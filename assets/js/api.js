@@ -6,6 +6,73 @@ import { API_KEY } from "./config.js"
 const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 
 
+export async function searchBooksFromInput(query) {
+    
+    
+    const response = await fetch(`${API_URL}${query}&maxResults=40&key=${API_KEY}`)
+    
+    
+
+    const data = await response.json()
+
+    let books = []
+
+    if (data.items) {
+        books = data.items.map(book => {
+        return {
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
+            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+            id: book.volumeInfo.id
+        }
+        
+    })
+    }
+
+    return books
+    
+}
+
+
+
+
+
+
+
+
+export async function searchBooks(query) {
+    
+    
+    const response = await fetch(`${API_URL}subject:${query}&maxResults=30&key=${API_KEY}`)
+    
+    
+
+    const data = await response.json()
+
+    let books = []
+
+    if (data.items) {
+        books = data.items.map(book => {
+        return {
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
+            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+            id: book.volumeInfo.id
+        }
+        
+    })
+    }
+
+    return books
+    
+}
+
+
+
+
+
+
+
 export async function tabBooks(category) {
     
     
@@ -105,3 +172,5 @@ export async function chooseTopBooks() {
 
     return top10Books
 }
+
+

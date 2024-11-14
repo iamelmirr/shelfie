@@ -1,9 +1,10 @@
 "use strict"
 
-import { tabBooks } from './api.js'
+import { searchBooks } from './api.js'
  
 const $tabBtns = document.querySelectorAll("[data-tab-btn]")
 const $tabPanels = document.querySelectorAll("[data-panel]")
+const $searchBtn = document.querySelector(".search-btn")
 
 // document.addEventListener("DOMContentLoaded", loadTabs)
 // document.addEventListener("DOMContentLoaded", latestReleases)
@@ -16,7 +17,7 @@ async function loadTabs (){
 
     panel.innerHTML = ''
 
-    const books = await tabBooks(tabCategory)
+    const books = await searchBooks(tabCategory)
 
     books.forEach(book => {
         const bookCard = `
@@ -184,4 +185,25 @@ async function topRatedBooks() {
     ratingsSlider.innerHTML += bookCard
 
   })
+}
+
+$searchBtn.addEventListener("click", handleSearch)
+
+
+function handleSearch () {
+  const searchInput = document.getElementById("search-input")
+
+  if (searchInput.value.trim('') === '') {
+    alert("Please enter a valid value")
+    searchInput.value = ""
+  } else {
+    
+    const searchTerm = searchInput.value.trim()
+
+    searchInput.value = ""
+
+    localStorage.clear()
+
+    window.location.href = `./books.html?search=${encodeURIComponent(searchTerm)}`
+  }
 }
