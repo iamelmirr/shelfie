@@ -70,17 +70,144 @@
                             <input type="search" name="search" placeholder="Search books">
                         </div>
                     </div>
+
+
                     <div class="filter-part">
-                        
+                        <button class="filter-part-btn">
+                            <i>BT</i>
+                            <p>Book type</p>
+                            <i>AD</i>
+                        </button>
+                        <div class="filter-content">
+                            <div class="filter-options">
+                                <label class="filter-chip filter option">Book</label>
+                                <label class="filter-chip filter option">Ebook</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="filter-part">
+                        <button class="filter-part-btn">
+                            <i>BT</i>
+                            <p>Language</p>
+                            <i>AD</i>
+                        </button>
+                        <div class="filter-content">
+                            <div class="filter-options">
+                                <label class="filter-chip filter option">English</label>
+                                <label class="filter-chip filter option">Spanish</label>
+                                <label class="filter-chip filter option">German</label>
+                                <label class="filter-chip filter option">Chinese</label>
+                                <label class="filter-chip filter option">Japanese</label>
+                                <label class="filter-chip filter option">Russian</label>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="filter-part">
+                        <button class="filter-part-btn">
+                            <i>BT</i>
+                            <p>Availability</p>
+                            <i>AD</i>
+                        </button>
+                        <div class="filter-content">
+                            <div class="filter-options">
+                                <label class="filter-chip filter option">Available</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-part">
+                        <button class="filter-part-btn">
+                            <i>BT</i>
+                            <p>Print type</p>
+                            <i>AD</i>
+                        </button>
+                        <div class="filter-content">
+                            <div class="filter-options">
+                                <label class="filter-chip filter option">Physical book</label>
+                                <label class="filter-chip filter option">Magazine</label>
+                                <label class="filter-chip filter option">All</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-part">
+                        <button class="filter-part-btn">
+                            <i>S</i>
+                            <p>Ratings</p>
+                            <i>AD</i>
+                        </button>
+                        <div class="filter-content">
+                            <div class="filter-options">
+                                <label class="filter-chip filter option">1+</label>
+                                <label class="filter-chip filter option">1.5+</label>
+                                <label class="filter-chip filter option">2+</label>
+                                <label class="filter-chip filter option">2.5+</label>
+                                <label class="filter-chip filter option">3+</label>
+                                <label class="filter-chip filter option">3.5+</label>
+                                <label class="filter-chip filter option">4+</label>
+                                <label class="filter-chip filter option">4.5+</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="filter-actions"></div>
+                <div class="filter-actions">
+                    <button class="filter-action clear-filters">Clear</button>
+                    <button class="filter-action apply-filters">Apply</button>
+                </div>
             </div>
-            <div class="books-container">
+            <div class="books-container container">
+                <div class="title-wrapper">
+                    <h2 class="headline">All Books</h2>
+                </div>
+                <div class="books-list">
+                    <div class="card">
 
+                        <figure class="card-media img-holder">
+                          <img src="./assets/images/hamlet_fa93d38c-b760-47d5-ac6a-7a4a0f9e1fe2.webp" width="200" height="200" loading="lazy" alt="Book name"
+                            class="img-cover">
+                        </figure>
+      
+                        <div class="card-body">
+      
+                          <h3 class="title-small">
+                            <a href="./detail.html" class="card-link">Hamlet</a>
+                          </h3>
+      
+                          <div class="meta-wrapper">
+      
+                            <div class="meta-item">
+                              <i></i>
+      
+                              <span class="label-medium">William Shakespeare</span>
+                            </div>
+      
+                            <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                              <i></i>
+      
+                              <i></i>
+                            </button>
+                          </div>
+      
+                        </div>
+                      </div>
+                </div>
             </div>
         </article>
     </main>
+
+    <footer>
+        <p>Copyright 2024 Elmo</p>
+        <a href="">
+            <img src="./assets/images/lightlogo2.png" alt="lightlogo2"></a>
+        <p>Powered by Google Books API</p>
+    </footer>    
     
+
+<script type="module" src="./assets/js/books.js"></script>    
 </body>
 </html>
