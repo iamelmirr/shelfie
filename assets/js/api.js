@@ -3,13 +3,18 @@
 
 import { API_KEY } from "./config.js"
 
- const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
+const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 
 
-export async function searchBooksFromInput(query) {
+export async function searchBooksFromInput(query, bookType, language, price, availability, rating) {
+
+    const fetchUrl = `${API_URL}${query}` + 
+        (bookType === "books" ? `&printType=books` : bookType === "ebook" ? `&filter=ebook` : "") + 
+        (language ? `&langRestrict=${language}` : "") + 
+        (price ? `$filter=${price}` : "")
     
     
-    const response = await fetch(`${API_URL}${query}&maxResults=40&key=${API_KEY}`)
+    const response = await fetch(`${fetchUrl}&maxResults=40&key=${API_KEY}`)
     
     
 
@@ -18,15 +23,28 @@ export async function searchBooksFromInput(query) {
     let books = []
 
     if (data.items) {
-        books = data.items.map(book => {
-        return {
+        books = data.items.map(book => ({
+        
             title: book.volumeInfo.title,
             authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
             image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            id: book.volumeInfo.id
-        }
+            id: book.volumeInfo.id,
+            averageRating: book.volumeInfo.averageRating || 0,
+            isAvailable: book.saleInfo.saleability === "FOR_SALE" || book.saleInfo.saleability === "FREE"
         
-    })
+        
+    }))
+
+    if(availability === "yes") {
+        books = books.filter(book => book.isAvailable)
+    }
+
+    if(rating) {
+        const minRating = parseFloat(rating)
+        books = books.filter(book => book.averageRating >= minRating)
+    }
+
+
     }
 
     return books

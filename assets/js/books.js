@@ -13,13 +13,24 @@ const $loadMoreBtn = document.querySelector("[load-more-btn]")
 
 async function getSearchTermFromUrl () {
     const params = new URLSearchParams(window.location.search)
-    const results = params.get("search")
 
-    console.log(results)
+    const searchTerm = params.get("search")
+    const bookType = params.get("bookType") || null
+    const language = params.get("language") || null
+    const availability = params.get("availability") || null
+    const price = params.get("filter") || null
+    let rating = params.get("rating")
+    if(rating) {
+      rating = decodeURIComponent(rating)
+    } else {
+      rating = null
+    }
 
-    if(results) {
+    
+
+    if(searchTerm) {
         booksList.innerHTML = ``
-        const books = await searchBooksFromInput(results)
+        const books = await searchBooksFromInput(searchTerm, bookType, language, price, availability, rating)
 
         if (books.length > 20) {
 
@@ -247,16 +258,16 @@ $availabilityFilter.addEventListener("click", () => {
 
 
 
-const $printTypes = document.querySelectorAll("[print-filter]")
+const $paidOrFree = document.querySelectorAll("[price-filter]")
 
-let printType = null
+let booksPrice = null
 
-$printTypes.forEach(type => {
+$paidOrFree.forEach(type => {
   type.addEventListener("click", function () {
 
     const isClicked = this.getAttribute("filter-clicked") === "true"
 
-    $printTypes.forEach(otherTypes => {
+    $paidOrFree.forEach(otherTypes => {
       if(otherTypes !== this) {
         otherTypes.setAttribute("filter-clicked", false)
       }
@@ -265,13 +276,13 @@ $printTypes.forEach(type => {
     if(isClicked) {
       this.setAttribute("filter-clicked", false)
 
-      printType = null
+      booksPrice = null
     } else {
       this.setAttribute("filter-clicked", true)
 
-      printType = this.getAttribute("print-filter")
+      booksPrice = this.getAttribute("price-filter")
 
-      console.log(printType)
+      console.log(booksPrice)
     }
 
   } )
@@ -325,10 +336,12 @@ $clearFiltersBtn.addEventListener("click", function () {
   })
 
   chosenRating = null
-  printType = null
+  booksPrice = null
   booksAvailability = null
   selectedLanguage = null
   bookTypeFilter = null
+
+  $applyFiltersBtn.click()
 })
 
 
@@ -394,3 +407,55 @@ $booksSearch.addEventListener("keydown", async function (e) {
 
 
 const $applyFiltersBtn = document.querySelector("[apply-filters-btn]")
+
+
+
+$applyFiltersBtn.addEventListener("click", applyFilters)
+
+
+async function applyFilters() {
+  const urlParams = new URLSearchParams(window.location.search)
+
+  const searchTerm = new URLSearchParams(window.location.search).get("search")
+
+
+  if ($booksSearch.value.trim('') === '') {
+    urlParams.set("search", searchTerm)
+  } else {
+    urlParams.set("search", $booksSearch.value)
+  }
+
+
+
+  if (bookTypeFilter) {
+    urlParams.set("bookType", bookTypeFilter)
+  } else {
+    urlParams.delete("bookType")
+  }
+  if (selectedLanguage) {
+    urlParams.set("language", selectedLanguage)
+  } else {
+    urlParams.delete("language")
+  }
+  if (booksAvailability) {
+    urlParams.set("availability", booksAvailability)
+  } else {
+    urlParams.delete("availability")
+  }
+  if (chosenRating) {
+    urlParams.set("rating", chosenRating)
+  } else {
+    urlParams.delete("rating")
+  }
+  if (booksPrice) {
+    urlParams.set("filter", booksPrice)
+  } else {
+    urlParams.delete("filter")
+  }
+  
+
+  const newUrl = `books.html?${urlParams.toString()}`
+
+
+  window.location.href = newUrl
+}
