@@ -202,7 +202,6 @@ function handleSearch () {
 
     searchInput.value = ""
 
-    localStorage.clear()
 
     window.location.href = `./books.html?search=${encodeURIComponent(searchTerm)}`
   }

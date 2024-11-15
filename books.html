@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shelfie - Reading made easy.</title>
+    <title>All Books - Shelfie</title>
 
     <link rel="shortcut icon" href="./scuticon.svg" type="image/svg+xml">
 
@@ -67,7 +67,7 @@
                     <div class="search-wrapper">
                         <div class="input-content">
                             <label for="search" class="">Search</label>
-                            <input type="search" name="search" placeholder="Search books">
+                            <input books-search type="search" name="search" placeholder="Search books">
                         </div>
                     </div>
 
@@ -80,8 +80,8 @@
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter-option">Book</label>
-                                <label class="filter-chip filter-option">Ebook</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" book-type-filter="book">Book</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" book-type-filter="ebook">Ebook</label>
                             </div>
                         </div>
                     </div>
@@ -95,12 +95,12 @@
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter-option">English</label>
-                                <label class="filter-chip filter-option">Spanish</label>
-                                <label class="filter-chip filter-option">German</label>
-                                <label class="filter-chip filter-option">Chinese</label>
-                                <label class="filter-chip filter-option">Japanese</label>
-                                <label class="filter-chip filter-option">Russian</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" lan-filter="EN">English</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" lan-filter="ES">Spanish</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" lan-filter="DE">German</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" lan-filter="CH">Chinese</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" lan-filter="JA">Japanese</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" lan-filter="RU">Russian</label>
 
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter-option">Available</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" avail-filter="Yes">Available</label>
                             </div>
                         </div>
                     </div>
@@ -129,9 +129,9 @@
                         <div class="filter-content">
                             <div class="filter-options">
                                 <label
-                                 class="filter-chip filter-option">Physical book</label>
-                                <label class="filter-chip filter-option">Magazine</label>
-                                <label class="filter-chip filter-option">All</label>
+                                 class="filter-chip filter-option" filter-clicked="false" print-filter="Physical">Physical book</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" print-filter="Magazine">Magazine</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" print-filter="All">All</label>
                             </div>
                         </div>
                     </div>
@@ -144,21 +144,21 @@
                         </button>
                         <div class="filter-content">
                             <div class="filter-options">
-                                <label class="filter-chip filter-option">1+</label>
-                                <label class="filter-chip filter-option">1.5+</label>
-                                <label class="filter-chip filter-option">2+</label>
-                                <label class="filter-chip filter-option">2.5+</label>
-                                <label class="filter-chip filter-option">3+</label>
-                                <label class="filter-chip filter-option">3.5+</label>
-                                <label class="filter-chip filter-option">4+</label>
-                                <label class="filter-chip filter-option">4.5+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="1+">1+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="1.5+">1.5+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="2+">2+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="2.5+">2.5+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="3+">3+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="3.5+">3.5+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="4+">4+</label>
+                                <label class="filter-chip filter-option" filter-clicked="false" rating-filter="4.5+">4.5+</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="filter-actions">
-                    <button class="filter-action clear-filters">Clear</button>
-                    <button class="filter-action apply-filters">Apply</button>
+                    <button class="filter-action clear-filters" clear-filters-btn>Clear</button>
+                    <button class="filter-action apply-filters" apply-filters-btn>Apply</button>
                 </div>
             </div>
             <div class="books-container container">

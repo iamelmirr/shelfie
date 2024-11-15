@@ -3,7 +3,7 @@
 
 import { API_KEY } from "./config.js"
 
-const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
+  const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 
 
 export async function searchBooksFromInput(query) {

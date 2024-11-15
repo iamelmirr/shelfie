@@ -402,9 +402,9 @@ main {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    height: 100%;
-    max-width: 176px;
+    gap: 0;
+    width: 176px;
+    height: 304.2px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
@@ -417,27 +417,30 @@ main {
 }
 
 .img-holder {
-    display: grid;
-    width: 100%;
+    display: flex;
+    width: 176px;
     height: 226px;
-    overflow: hidden;
     border-radius: 12px;
     overflow: hidden;
     place-items: center;
+    justify-content: center;
 }
 
 .img-holder img {
+    display: grid;
     object-fit: fill;
     width: 85%;
     height: 88%;
     border-radius: 3px;
+    
 }
 
 .card-body {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
-    padding: 0 0.8rem;
+    padding: 0 1rem;
+    flex-grow: 3;
 }
 
 .title-small {
@@ -456,7 +459,6 @@ main {
     position: relative;
     display: flex;
     justify-content: space-between;
-    height: 2rem;
     align-items: center;
     margin-bottom: 5px;
 }
@@ -474,11 +476,14 @@ main {
 .label-medium {
     font-size: 1.2rem;
     font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
     max-width: 125px;
 }
+
 
 
 /* SLIDER */
@@ -593,7 +598,7 @@ footer p {
 
 
 
-
+/* BOOKS.HTML */
 
 
 .article {
@@ -693,6 +698,10 @@ footer p {
     width: fit-content;
 }
 
+.filter-option[filter-clicked="true"] {
+    background: violet;
+}
+
 
 .filter-actions{
     padding: 25px 20px;
@@ -703,5 +712,14 @@ footer p {
 
 
 .books-container {
-    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 1rem;
 }
