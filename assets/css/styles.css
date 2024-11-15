@@ -723,3 +723,10 @@ footer p {
     flex-wrap: wrap;
     gap: 1.5rem 1rem;
 }
+
+.load-more-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
