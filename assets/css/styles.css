@@ -618,6 +618,7 @@ footer p {
     top: 0;
     overflow-y: auto;
     height: calc(100vh - 96px);
+    
 }
 
 .filter-title-wrapper {
