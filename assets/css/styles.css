@@ -613,11 +613,11 @@ footer p {
     max-width: 360px;
     width: 100%;
     margin-block-start: -16px;
-    border-right: 1px solid var(--outline);
     margin-block-end: -40px;
-    top: 0;
+    border-right: 1px solid var(--outline);
+    top: 80px;
     overflow-y: auto;
-    height: calc(100vh - 96px);
+    height: calc(100vh - 80px);
     
 }
 
