@@ -206,3 +206,6 @@ function handleSearch () {
     window.location.href = `./books.html?search=${encodeURIComponent(searchTerm)}`
   }
 }
+
+
+console.log(localStorage)

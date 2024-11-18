@@ -4,6 +4,7 @@ import { searchBooksFromInput } from "./api.js"
 
 
 document.addEventListener("DOMContentLoaded", plainBooksPage)
+document.addEventListener("DOMContentLoaded", loadFromLocalStorage)
 
 
 
@@ -187,6 +188,7 @@ $bookTypeFilter.forEach(filter => {
     $bookTypeFilter.forEach(otherFilter => {
       if (otherFilter !== this) {
         otherFilter.setAttribute("filter-clicked", false)
+        localStorage.removeItem("bookTypeFilter", otherFilter.getAttribute("book-type-filter"))
       }
     })
       
@@ -194,13 +196,17 @@ $bookTypeFilter.forEach(filter => {
       this.setAttribute("filter-clicked", false)
       
       bookTypeFilter = null
+      localStorage.removeItem("bookTypeFilter", this.getAttribute("book-type-filter"))
 
       } else {
       this.setAttribute("filter-clicked", true)
       bookTypeFilter = this.getAttribute("book-type-filter")
+      localStorage.setItem("bookTypeFilter", this.getAttribute("book-type-filter"))
     }
     
     console.log(bookTypeFilter)
+    console.log(localStorage)
+    
 
   
 })
@@ -219,6 +225,7 @@ $languageFilters.forEach(filter => {
     $languageFilters.forEach(otherFilter => {
       if(otherFilter !== this) {
         otherFilter.setAttribute("filter-clicked", false)
+        localStorage.removeItem("selectedLanguage", otherFilter.getAttribute("lan-filter"))
         
       }
     })
@@ -226,13 +233,18 @@ $languageFilters.forEach(filter => {
     if (isClicked) {
       this.setAttribute("filter-clicked", false)
       selectedLanguage = null
+      localStorage.removeItem("selectedLanguage", this.getAttribute("lan-filter"))
       
     } else {
       this.setAttribute("filter-clicked", true)
       selectedLanguage = this.getAttribute("lan-filter")
+      localStorage.setItem("selectedLanguage", this.getAttribute("lan-filter"))
 
-      console.log(selectedLanguage)
+      
     }
+
+    console.log(selectedLanguage)
+    console.log(localStorage)
   })
 })
 
@@ -247,13 +259,18 @@ $availabilityFilter.addEventListener("click", () => {
     $availabilityFilter.setAttribute("filter-clicked", false)
     
     booksAvailability = null
+
+    localStorage.removeItem("booksAvailability", $availabilityFilter.getAttribute("avail-filter"))
   } else {
     $availabilityFilter.setAttribute("filter-clicked", true)
 
     booksAvailability = "available"
 
-    console.log(booksAvailability)
+    localStorage.setItem("booksAvailability", $availabilityFilter.getAttribute("avail-filter"))
+
   }
+  console.log(booksAvailability)
+  console.log(localStorage)
 })
 
 
@@ -271,6 +288,7 @@ $paidOrFree.forEach(type => {
     $paidOrFree.forEach(otherTypes => {
       if(otherTypes !== this) {
         otherTypes.setAttribute("filter-clicked", false)
+        localStorage.setItem("booksPrice", otherTypes.getAttribute("price-filter"))
       }
     })
 
@@ -278,14 +296,17 @@ $paidOrFree.forEach(type => {
       this.setAttribute("filter-clicked", false)
 
       booksPrice = null
+      localStorage.removeItem("booksPrice", this.getAttribute("price-filter"))
     } else {
       this.setAttribute("filter-clicked", true)
 
       booksPrice = this.getAttribute("price-filter")
+      localStorage.setItem("booksPrice", this.getAttribute("price-filter"))
 
-      console.log(booksPrice)
     }
-
+    
+    console.log(booksPrice)
+    console.log(localStorage)
   } )
 })
 
@@ -305,6 +326,7 @@ $ratingFilters.forEach(rating => {
     $ratingFilters.forEach(otherFilter => {
       if (otherFilter !== this) {
         otherFilter.setAttribute("filter-clicked", false)
+        localStorage.setItem("chosenRating", otherFilter.getAttribute("rating-filter"))
       }
     })
 
@@ -312,13 +334,16 @@ $ratingFilters.forEach(rating => {
       this.setAttribute("filter-clicked", false)
 
       chosenRating = null
+      localStorage.removeItem("chosenRating", this.getAttribute("rating-filter"))
     } else {
       this.setAttribute("filter-clicked", true)
 
       chosenRating = this.getAttribute("rating-filter")
+      localStorage.setItem("chosenRating", this.getAttribute("rating-filter"))
 
-      console.log(chosenRating)
     }
+    console.log(chosenRating)
+    console.log(localStorage)
 
   })
 })
@@ -601,4 +626,56 @@ async function applyFilters() {
 
 
   window.location.href = newUrl
+}
+
+
+function loadFromLocalStorage() {
+
+  const savedBookTypeFilter = localStorage.getItem("bookTypeFilter")
+
+  if(savedBookTypeFilter) {
+    const bookFilter = document.querySelector(`[book-type-filter="${savedBookTypeFilter}"]`)
+
+    if(bookFilter) {
+      bookFilter.setAttribute("filter-clicked", true)
+    }
+  }
+
+  const savedLanguageFilter = localStorage.getItem("selectedLanguage")
+
+  if(savedLanguageFilter) {
+    const languageFilter = document.querySelector(`[lan-filter="${savedLanguageFilter}"]`)
+
+    if(languageFilter) {
+      languageFilter.setAttribute("filter-clicked", true)
+    }
+  }
+
+  const savedBooksAvailability = localStorage.getItem("booksAvailability")
+
+  if(savedBooksAvailability) {
+    const availabilityFilter = document.querySelector("[avail-filter]")
+
+    availabilityFilter.setAttribute("filter-clicked", true)
+  }
+
+  const savedPriceFilter = localStorage.getItem("booksPrice")
+
+  if(savedPriceFilter) {
+    const priceFilter = document.querySelector(`[price-filter=${savedPriceFilter}]`) 
+
+    if(priceFilter) {
+      priceFilter.setAttribute("filter-clicked", true)
+    }
+  }
+
+  const savedBooksRating = localStorage.getItem("chosenRating")
+  
+  if(savedBooksRating) {
+    const chosenBooksRating = document.querySelector(`[rating-filter="${savedBooksRating}"]`)
+
+    if(chosenBooksRating) {
+      chosenBooksRating.setAttribute("filter-clicked", true)
+    }
+  }
 }
