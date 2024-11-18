@@ -188,7 +188,6 @@ $bookTypeFilter.forEach(filter => {
     $bookTypeFilter.forEach(otherFilter => {
       if (otherFilter !== this) {
         otherFilter.setAttribute("filter-clicked", false)
-        localStorage.removeItem("bookTypeFilter", otherFilter.getAttribute("book-type-filter"))
       }
     })
       
@@ -196,12 +195,12 @@ $bookTypeFilter.forEach(filter => {
       this.setAttribute("filter-clicked", false)
       
       bookTypeFilter = null
-      localStorage.removeItem("bookTypeFilter", this.getAttribute("book-type-filter"))
+      localStorage.removeItem("bookTypeFilter")
 
       } else {
       this.setAttribute("filter-clicked", true)
       bookTypeFilter = this.getAttribute("book-type-filter")
-      localStorage.setItem("bookTypeFilter", this.getAttribute("book-type-filter"))
+      
     }
     
     console.log(bookTypeFilter)
@@ -225,7 +224,6 @@ $languageFilters.forEach(filter => {
     $languageFilters.forEach(otherFilter => {
       if(otherFilter !== this) {
         otherFilter.setAttribute("filter-clicked", false)
-        localStorage.removeItem("selectedLanguage", otherFilter.getAttribute("lan-filter"))
         
       }
     })
@@ -233,14 +231,12 @@ $languageFilters.forEach(filter => {
     if (isClicked) {
       this.setAttribute("filter-clicked", false)
       selectedLanguage = null
-      localStorage.removeItem("selectedLanguage", this.getAttribute("lan-filter"))
+      localStorage.removeItem("selectedLanguage")
       
     } else {
       this.setAttribute("filter-clicked", true)
       selectedLanguage = this.getAttribute("lan-filter")
-      localStorage.setItem("selectedLanguage", this.getAttribute("lan-filter"))
-
-      
+  
     }
 
     console.log(selectedLanguage)
@@ -260,13 +256,11 @@ $availabilityFilter.addEventListener("click", () => {
     
     booksAvailability = null
 
-    localStorage.removeItem("booksAvailability", $availabilityFilter.getAttribute("avail-filter"))
+    localStorage.removeItem("booksAvailability")
   } else {
     $availabilityFilter.setAttribute("filter-clicked", true)
 
     booksAvailability = "available"
-
-    localStorage.setItem("booksAvailability", $availabilityFilter.getAttribute("avail-filter"))
 
   }
   console.log(booksAvailability)
@@ -288,7 +282,6 @@ $paidOrFree.forEach(type => {
     $paidOrFree.forEach(otherTypes => {
       if(otherTypes !== this) {
         otherTypes.setAttribute("filter-clicked", false)
-        localStorage.setItem("booksPrice", otherTypes.getAttribute("price-filter"))
       }
     })
 
@@ -296,12 +289,11 @@ $paidOrFree.forEach(type => {
       this.setAttribute("filter-clicked", false)
 
       booksPrice = null
-      localStorage.removeItem("booksPrice", this.getAttribute("price-filter"))
+      localStorage.removeItem("booksPrice")
     } else {
       this.setAttribute("filter-clicked", true)
 
       booksPrice = this.getAttribute("price-filter")
-      localStorage.setItem("booksPrice", this.getAttribute("price-filter"))
 
     }
     
@@ -326,7 +318,6 @@ $ratingFilters.forEach(rating => {
     $ratingFilters.forEach(otherFilter => {
       if (otherFilter !== this) {
         otherFilter.setAttribute("filter-clicked", false)
-        localStorage.setItem("chosenRating", otherFilter.getAttribute("rating-filter"))
       }
     })
 
@@ -334,12 +325,11 @@ $ratingFilters.forEach(rating => {
       this.setAttribute("filter-clicked", false)
 
       chosenRating = null
-      localStorage.removeItem("chosenRating", this.getAttribute("rating-filter"))
+      localStorage.removeItem("chosenRating")
     } else {
       this.setAttribute("filter-clicked", true)
 
       chosenRating = this.getAttribute("rating-filter")
-      localStorage.setItem("chosenRating", this.getAttribute("rating-filter"))
 
     }
     console.log(chosenRating)
@@ -366,6 +356,8 @@ $clearFiltersBtn.addEventListener("click", function () {
   booksAvailability = null
   selectedLanguage = null
   bookTypeFilter = null
+
+  localStorage.clear()
 
   $applyFiltersBtn.click()
 })
@@ -593,39 +585,66 @@ async function applyFilters() {
     urlParams.set("search", $booksSearch.value)
   }
 
+  if(localStorage.getItem("bookTypeFilter")) {
+    const $bookFilterType = localStorage.getItem("bookTypeFilter")
+    urlParams.set("bookType", $bookFilterType)
 
-
-  if (bookTypeFilter) {
+  } else if (bookTypeFilter) {
     urlParams.set("bookType", bookTypeFilter)
+    localStorage.setItem("bookTypeFilter", bookTypeFilter)
   } else {
     urlParams.delete("bookType")
   }
-  if (selectedLanguage) {
+
+  
+  if(localStorage.getItem("selectedLanguage")) {
+    const $selectedLanguage = localStorage.getItem("selectedLanguage")
+    urlParams.set("language", $selectedLanguage)
+  } else if (selectedLanguage) {
     urlParams.set("language", selectedLanguage)
+    localStorage.setItem("selectedLanguage", selectedLanguage)
   } else {
     urlParams.delete("language")
   }
-  if (booksAvailability) {
+
+
+  if(localStorage.getItem("booksAvailability")) {
+    const $booksAvailability = localStorage.getItem("booksAvailability")
+    urlParams.set("availability", $booksAvailability)
+  } else if(booksAvailability) {
     urlParams.set("availability", booksAvailability)
-  } else {
+    localStorage.setItem("booksAvailability", "yes")
+  }  else {
     urlParams.delete("availability")
   }
-  if (chosenRating) {
+  
+  
+  if (localStorage.getItem("chosenRating")) {
+    const $chosenRating = localStorage.getItem("chosenRating")
+    urlParams.set("rating", $chosenRating)
+  } else if (chosenRating) {
     urlParams.set("rating", chosenRating)
+    localStorage.setItem("chosenRating", chosenRating)
   } else {
     urlParams.delete("rating")
   }
-  if (booksPrice) {
+
+
+  if (localStorage.getItem("booksPrice")) {
+    const $booksPrice = localStorage.getItem("booksPrice")
+    urlParams.set("filter", $booksPrice)
+  } else if (booksPrice) {
     urlParams.set("filter", booksPrice)
+    localStorage.setItem("booksPrice", booksPrice)
   } else {
     urlParams.delete("filter")
   }
-  
 
   const newUrl = `books.html?${urlParams.toString()}`
 
 
   window.location.href = newUrl
+  
 }
 
 
@@ -679,3 +698,5 @@ function loadFromLocalStorage() {
     }
   }
 }
+
+console.log(localStorage)
