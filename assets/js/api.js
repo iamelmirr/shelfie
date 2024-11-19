@@ -25,10 +25,10 @@ export async function searchBooksFromInput(query, bookType, language, price, ava
     if (data.items) {
         books = data.items.map(book => ({
         
+            id: book.id,
             title: book.volumeInfo.title,
             authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
             image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            id: book.volumeInfo.id,
             averageRating: book.volumeInfo.averageRating || 0,
             isAvailable: book.saleInfo.saleability === "FOR_SALE" || book.saleInfo.saleability === "FREE"
         
@@ -72,10 +72,11 @@ export async function searchBooks(query) {
     if (data.items) {
         books = data.items.map(book => {
         return {
+            id: book.id,
             title: book.volumeInfo.title,
             authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
             image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            id: book.volumeInfo.id
+            
         }
         
     })
@@ -105,10 +106,11 @@ export async function tabBooks(category) {
     if (data.items) {
         books = data.items.map(book => {
         return {
+            id: book.id,
             title: book.volumeInfo.title,
             authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
             image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            id: book.volumeInfo.id
+            
         }
         
     })
@@ -130,10 +132,11 @@ export async function latestReleasesBooks() {
     if (data.items) {
         books = data.items.map(book => {
             return {
+                id: book.id,
                 title: book.volumeInfo.title,
                 authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
                 image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-                id: book.volumeInfo.id 
+                
             }
         })
     }
@@ -162,11 +165,12 @@ async function fetchBooksByAuthor(author) {
     if(data.items) {
         return data.items.map(book => ({
             
+                id: book.id,
                 title: book.volumeInfo.title,
                 authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
                 image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
                 averageRating: book.volumeInfo.averageRating || 0,
-                id: book.volumeInfo.id 
+                
             })
         )
     }

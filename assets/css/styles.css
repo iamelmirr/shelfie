@@ -741,7 +741,7 @@ footer p {
 
 
 #details-main {
-    justify-content: center;
+    margin-top: 50px;
     
 }
 
@@ -749,13 +749,21 @@ footer p {
     display: flex;
     gap: 36px;
     max-width: 1130px;
-    width: 95%;
     align-items: center;
-    object-fit: contain;
 }
 
 .book-img {
     width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.book-img img {
+height: 80%;
 }
 
 .detail-content {
@@ -768,10 +776,95 @@ footer p {
 .detail-title-wrapper {
     display: flex;
     gap: 20px;
+    justify-content: space-between;
+}
+
+.detail-title-wrapper h2 {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.authors-wrapper {
+    font-size: 13px;
+}
+
+.ratings-container {
+    font-size: 13px;
 }
 
 .basic-details {
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+
+.basic-details div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    gap: 7px;
+    padding-block: 2.5rem;
+}
+
+.basic-details div .big-span {
+    font-size: 3rem;
+    font-weight: 400;
+    
+}
+
+.basic-details div .basic-detail {
+    font-size: 1.1rem;
+}
+
+.page-count {
+    border-right: 1px solid var(--alpha-20);
+}
+
+.reading-time {
+    border-right: 1px solid var(--alpha-20);
+}
+
+.tags-container {
+    display: flex;
+    gap: 20px;
+}
+
+.tags-container .tag {
+    border: 1px solid var(--alpha-20);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.more-details-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.details-wrapper {
+    display: flex;
+    justify-content: space-between;
+    background: var(--alpha-10);
+    padding: 5px 10px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: 13px;
+}
+
+.more-details {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px 15px 10px;
+    border-left: 1px solid var(--alpha-10);
+    border-right: 1px solid var(--alpha-10);
+    border-bottom: 1px solid var(--alpha-10);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    gap: 10px;
+    font-size: 13px;
+
 }

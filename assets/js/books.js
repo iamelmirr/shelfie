@@ -3,8 +3,10 @@
 import { searchBooksFromInput } from "./api.js"
 
 
-document.addEventListener("DOMContentLoaded", plainBooksPage)
-document.addEventListener("DOMContentLoaded", loadFromLocalStorage)
+document.addEventListener("DOMContentLoaded", () => {
+  plainBooksPage();
+  loadFromLocalStorage();
+})
 
 
 
@@ -43,42 +45,44 @@ async function getSearchTermFromUrl () {
 
         firstBatch.forEach(book => {
             const bookCard = `
-            <div class="card">
-    
-                        <figure class="card-media img-holder">
-                          <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                            class="img-cover">
-                        </figure>
-      
-                        <div class="card-body">
-      
-                          <h3 class="title-small">
-                            <a href="./detail.html" class="card-link">${book.title}</a>
-                          </h3>
-      
-                          <div class="meta-wrapper">
-      
-                            <div class="meta-item">
-                              <i></i>
-      
-                              <span class="label-medium">${book.authors}</span>
-                            </div>
-      
-                            <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                              <i></i>
-      
-                              <i></i>
-                            </button>
-      
-                          </div>
-      
-                        </div>
-      
+            <div class="card" data-id="${book.id}">
+
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
+
+                  <div class="card-body">
+
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
+
+                    <div class="meta-wrapper">
+
+                      <div class="meta-item">
+                        <i></i>
+
+                        <span class="label-medium">${book.authors}</span>
                       </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        <i></i>
+
+                        <i></i>
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                </div>
                       
             `
-            booksList.innerHTML += bookCard
             
+            booksList.innerHTML += bookCard
+            const bookElement = booksList.lastElementChild
+           attachBookEventListener(bookElement)
         })
 
 
@@ -86,41 +90,44 @@ async function getSearchTermFromUrl () {
           const remainingBooks = books.slice(20)
           remainingBooks.forEach((book) => {
             const bookCard = `
-            <div class="card">
-    
-                        <figure class="card-media img-holder">
-                          <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                            class="img-cover">
-                        </figure>
-      
-                        <div class="card-body">
-      
-                          <h3 class="title-small">
-                            <a href="./detail.html" class="card-link">${book.title}</a>
-                          </h3>
-      
-                          <div class="meta-wrapper">
-      
-                            <div class="meta-item">
-                              <i></i>
-      
-                              <span class="label-medium">${book.authors}</span>
-                            </div>
-      
-                            <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                              <i></i>
-      
-                              <i></i>
-                            </button>
-      
-                          </div>
-      
-                        </div>
-      
+            <div class="card" data-id="${book.id}">
+
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
+
+                  <div class="card-body">
+
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
+
+                    <div class="meta-wrapper">
+
+                      <div class="meta-item">
+                        <i></i>
+
+                        <span class="label-medium">${book.authors}</span>
                       </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        <i></i>
+
+                        <i></i>
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                </div>
                       
             `
+            
             booksList.innerHTML += bookCard
+            const bookElement = booksList.lastElementChild
+            attachBookEventListener(bookElement)
           })
 
           $loadMoreBtn.innerHTML = "No more books"
@@ -129,41 +136,43 @@ async function getSearchTermFromUrl () {
       } else {
         books.forEach((book) => {
           const bookCard = `
-            <div class="card">
-    
-                        <figure class="card-media img-holder">
-                          <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                            class="img-cover">
-                        </figure>
-      
-                        <div class="card-body">
-      
-                          <h3 class="title-small">
-                            <a href="./detail.html" class="card-link">${book.title}</a>
-                          </h3>
-      
-                          <div class="meta-wrapper">
-      
-                            <div class="meta-item">
-                              <i></i>
-      
-                              <span class="label-medium">${book.authors}</span>
-                            </div>
-      
-                            <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                              <i></i>
-      
-                              <i></i>
-                            </button>
-      
-                          </div>
-      
-                        </div>
-      
+            <div class="card" data-id="${book.id}">
+
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
+
+                  <div class="card-body">
+
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
+
+                    <div class="meta-wrapper">
+
+                      <div class="meta-item">
+                        <i></i>
+
+                        <span class="label-medium">${book.authors}</span>
                       </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        <i></i>
+
+                        <i></i>
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                </div>
                       
             `
             booksList.innerHTML += bookCard
+            const bookElement = booksList.lastElementChild
+            attachBookEventListener(bookElement)
         })
       }
     }
@@ -380,41 +389,43 @@ $booksSearch.addEventListener("keydown", async function (e) {
 
         books.forEach(book => {
             const bookCard = `
-            <div class="card">
-    
-                        <figure class="card-media img-holder">
-                          <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                            class="img-cover">
-                        </figure>
-      
-                        <div class="card-body">
-      
-                          <h3 class="title-small">
-                            <a href="./detail.html" class="card-link">${book.title}</a>
-                          </h3>
-      
-                          <div class="meta-wrapper">
-      
-                            <div class="meta-item">
-                              <i></i>
-      
-                              <span class="label-medium">${book.authors}</span>
-                            </div>
-      
-                            <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                              <i></i>
-      
-                              <i></i>
-                            </button>
-      
-                          </div>
-      
-                        </div>
-      
+            <div class="card" data-id="${book.id}">
+
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
+
+                  <div class="card-body">
+
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
+
+                    <div class="meta-wrapper">
+
+                      <div class="meta-item">
+                        <i></i>
+
+                        <span class="label-medium">${book.authors}</span>
                       </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        <i></i>
+
+                        <i></i>
+                      </button>
+
+                    </div>
+
+                  </div>
+
+                </div>
                       
             `
             booksList.innerHTML += bookCard
+            const bookElement = booksList.lastElementChild
+            attachBookEventListener(bookElement)
 
 
         })}
@@ -442,7 +453,7 @@ async function plainBooksPage() {
 
   firstBatch.forEach(book => {
       const bookCard = `
-      <div class="card">
+      <div class="card" data-id="${book.id}">
 
                   <figure class="card-media img-holder">
                     <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
@@ -452,7 +463,7 @@ async function plainBooksPage() {
                   <div class="card-body">
 
                     <h3 class="title-small">
-                      <a href="./detail.html" class="card-link">${book.title}</a>
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
                     </h3>
 
                     <div class="meta-wrapper">
@@ -477,6 +488,9 @@ async function plainBooksPage() {
                 
       `
       booksList.innerHTML += bookCard
+      const bookElement = booksList.lastElementChild
+      attachBookEventListener(bookElement)
+      
       
   })
 
@@ -485,7 +499,7 @@ async function plainBooksPage() {
     const remainingBooks = books.slice(20)
     remainingBooks.forEach((book) => {
       const bookCard = `
-      <div class="card">
+      <div class="card" data-id="${book.id}">
 
                   <figure class="card-media img-holder">
                     <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
@@ -495,7 +509,7 @@ async function plainBooksPage() {
                   <div class="card-body">
 
                     <h3 class="title-small">
-                      <a href="./detail.html" class="card-link">${book.title}</a>
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
                     </h3>
 
                     <div class="meta-wrapper">
@@ -520,6 +534,9 @@ async function plainBooksPage() {
                 
       `
       booksList.innerHTML += bookCard
+      const bookElement = booksList.lastElementChild
+      attachBookEventListener(bookElement)
+      
     })
 
     $loadMoreBtn.innerHTML = "No more books"
@@ -528,7 +545,7 @@ async function plainBooksPage() {
 } else {
   books.forEach((book) => {
     const bookCard = `
-      <div class="card">
+      <div class="card" data-id="${book.id}">
 
                   <figure class="card-media img-holder">
                     <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
@@ -538,7 +555,7 @@ async function plainBooksPage() {
                   <div class="card-body">
 
                     <h3 class="title-small">
-                      <a href="./detail.html" class="card-link">${book.title}</a>
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
                     </h3>
 
                     <div class="meta-wrapper">
@@ -563,6 +580,9 @@ async function plainBooksPage() {
                 
       `
       booksList.innerHTML += bookCard
+      const bookElement = booksList.lastElementChild
+      attachBookEventListener(bookElement)
+      
   })}}
 
 
@@ -700,3 +720,17 @@ function loadFromLocalStorage() {
 }
 
 console.log(localStorage)
+
+ function attachBookEventListener(bookElement) {
+  
+    
+     const bookImage = bookElement.querySelector(".card-media")
+     booksList.addEventListener("click", (event) => {
+       if (event.target && event.target.matches('.card-media img')) {
+        const bookElement = event.target.closest('.card')         
+        const  bookId = bookElement.dataset.id
+        window.location.href = `./book-details.html?id=${bookId}`}})
+
+    }
+ 
+  
