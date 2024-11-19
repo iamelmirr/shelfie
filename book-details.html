@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+
+    <link rel="shortcut icon" href="./scuticon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./assets/css/styles.css">   
+    
+    
+    <script src="./assets/js/theme.js"></script>
+    <script type="module" src="./assets/js/api.js"></script>
+    <script type="module" src="./assets/js/config.js"></script>
+</head>
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <a href="/">
+            <img class="header-logo" src="./assets/images/lightlogo2.png" alt="Shelfie">
+        </a>
+
+        <nav class="main-nav">
+           
+                
+                    <a class="header-btn" href="/">Home</a>
+                
+                
+                    <a class="header-btn" href="/">Books</a>
+                
+            
+        </nav>
+
+
+        <div class="header-part">
+        <button class="themebtn" theme-btn>
+            <img class="themeimg" src="./assets/images/moonblack.svg" alt="darkmode">
+            <!-- <img src="./assets/images/lightmode.svg" alt="lightmode"> -->
+        </button>
+
+        <a class="savedlink" href="/">
+            <img class="savedimg" src="./assets/images/bookmarkwhite.svg" alt="savedbtn">
+            <span class="span">Saved Books</span>
+        </a>
+    </div>
+
+    </header>
+
+
+    <main id="details-main">
+
+
+        <article class="detail-article">
+            <div class="book-img">
+                <img src="" alt="book-img" class="detail-book-img">
+                <button show-on-gb-btn>View on Google Books</button>
+            </div>
+
+            <div class="detail-content">
+                <div class="detail-title-wrapper">
+                    <h2>This is the title of the book that should be wrapped</h2>
+                    <button class="save-btn">Save</button>
+                </div>
+                <div class="authors-wrapper">
+                    <span class="author">Author:</span>
+                    <span class="book-author">William Shakespeare</span>
+                </div>
+                <div class="ratings-container">
+                    <span>STARS</span>
+                    <span>4.5</span>
+                    <span>/5</span>
+                </div>
+
+
+                <div class="basic-details">
+                    <div class="page-count">
+                        <span number-of-pages>265</span>
+                        <span class="basic-detail">pages</span>
+                    </div>
+
+                    <br>
+
+                    <div class="reading-time">
+                        <span reading-time>3.5 hr</span>
+                        <span class="basic-detail">avg reading time</span>
+                    </div>
+
+                    <br>
+
+                    <div class="ebook-available">
+                        <span reading-time>Yes</span>
+                        <span class="basic-detail">ebook available</span>
+                    </div>
+                </div>
+
+
+                <div class="tags-container">
+                    <div class="tag">category 1</div>
+                    <div class="tag">category 2</div>
+                    <div class="tag">category 3</div>
+                </div>
+
+                <div class="more-details-container">
+                    <p>Details</p>
+                    <i>AD</i>
+                    <div class="more-details">
+                        <span>Published date: date</span>
+                        <span>Language: language</span>
+                        <span>Categories: categories</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </article>
+
+
+    </main>
+
+
+
+
+
+<!-- FOOTER  -->
+
+    <footer>
+        <p>Copyright 2024 Elmo</p>
+        <a href="">
+            <img src="./assets/images/lightlogo2.png" alt="lightlogo2"></a>
+        <p>Powered by Google Books API</p>
+    </footer>
+
+</body>
+</html>
