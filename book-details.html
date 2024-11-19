@@ -64,7 +64,9 @@
         <article class="detail-article">
             <div class="book-img">
                 <img src="" alt="book-img" class="detail-book-img">
-                <button show-on-gb-btn>View on Google Books</button>
+                <a class="detail-link" gb-link>View on Google Books</a>
+                <a class="detail-link" pdf-link href="http://books.google.com/books/download/British_Comedy_Cinema-sample-pdf.acsm?id=NHiCiLUC9JsC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api" target="_blank">Download Sample PDF</a>
+
             </div>
 
             <div class="detail-content">
@@ -73,7 +75,7 @@
                     <button class="save-btn">Save</button>
                 </div>
                 <div class="authors-wrapper">
-                    <span class="author">Author:</span>
+                    <span class="author">Author(s):</span>
                     <span class="book-author">William Shakespeare</span>
                 </div>
                 <div class="ratings-container">
@@ -117,9 +119,36 @@
                         <i>AD</i>
                     </div>
                     <div class="more-details">
-                        <span>Published date: date</span>
-                        <span>Language: language</span>
-                        <span>Categories: categories</span>
+                        <div class="detailed-div">
+                            <span>Publisher: </span>
+                            <span id="publisher">Routledge</span>
+                        </div>
+                        <div class="detailed-div">
+                            <span>Published date: </span>
+                            <span id="published-date">date</span>
+                        </div>
+                        
+                        <div class="detailed-div">
+                            <span>Language: </span>
+                            <span id="lang-span">language</span>
+                        </div>
+                        
+                        <div class="detailed-div">
+                            <span>Categories: </span>
+                            <span id="catgrs-span">categories</span>
+                        </div>
+                        
+                        <div class="detailed-div">
+                            <span>Maturity rating: </span>
+                            <span id="maturity-span">Not Mature</span>
+                        </div>
+                        
+                        <div class="detailed-div">
+                            <span>Description: </span>
+                            <span id="description-span">description</span>
+                        </div>
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -143,5 +172,7 @@
         <p>Powered by Google Books API</p>
     </footer>
 
+
+    <script type="module" src="./assets/js/books-details.js"></script>
 </body>
 </html>

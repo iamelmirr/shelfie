@@ -4,6 +4,7 @@
 import { API_KEY } from "./config.js"
 
 const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
+const API_URL_ID_FETCH = 'https://www.googleapis.com/books/v1/volumes/'
 
 
 export async function searchBooksFromInput(query, bookType, language, price, availability, rating) {
@@ -196,3 +197,14 @@ export async function chooseTopBooks() {
 }
 
 
+export async function fetchBooksByUrlId(bookId) {
+
+    const url = `${API_URL_ID_FETCH}${bookId}?key=${API_KEY}`
+
+    const response = await fetch(url)
+
+    const data = await response.json()
+    
+    return data
+    
+}
