@@ -7,6 +7,38 @@ const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 const API_URL_ID_FETCH = 'https://www.googleapis.com/books/v1/volumes/'
 
 
+export async function searchCategoryFromUrl(category) {
+
+    const fetchUrl = `${API_URL}subject:${category}`
+
+    const response = await fetch(`${fetchUrl}&maxResults=40&key=${API_KEY}`)
+
+    const data = await response.json()
+
+    let books = []
+
+    if (data.items) {
+        books = data.items.map(book => ({
+        
+            id: book.id,
+            title: book.volumeInfo.title,
+            authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
+            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+            averageRating: book.volumeInfo.averageRating || 0,
+            isAvailable: book.saleInfo.saleability === "FOR_SALE" || book.saleInfo.saleability === "FREE"
+        
+        
+    }))
+
+    
+
+
+    }
+
+    return books
+    
+}
+
 export async function searchBooksFromInput(query, bookType, language, price, availability, rating) {
 
     const fetchUrl = `${API_URL}${query}` + 
@@ -124,7 +156,7 @@ export async function tabBooks(category) {
 
 export async function latestReleasesBooks() {
     
-    const response = await fetch(`${API_URL}best&maxResults=10&key=${API_KEY}`)
+    const response = await fetch(`${API_URL}subject:general&orderBy=newest&maxResults=10&key=${API_KEY}`)
 
     const data = await response.json()
 
