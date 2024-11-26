@@ -69,6 +69,34 @@ async function fetchBookDetails () {
         
         displayStars(averageRating || 0)
 
+        function mapMaturityRating(rating) {
+            switch(rating) {
+                case "NOT_MATURE":
+                    return "Not Mature"
+
+                case "MATURE":
+                    return "Mature"
+                    
+                default:
+                    return "Unknown"    
+            }
+        }
+
+        const languageMap = {
+            en: "English",
+            es: "Spanish",
+            fr: "French",
+            de: "German",
+            it: "Italian",
+            ja: "Japanese",
+            zh: "Chinese",
+            ru: "Russian",
+            ar: "Arabic",
+            hi: "Hindi",
+            pt: "Portuguese"
+        };
+        
+
 
 
         document.querySelector(".detail-book-img").src = imageLinks?.thumbnail || "./assets/images/book-default.jpg"
@@ -80,8 +108,8 @@ async function fetchBookDetails () {
         document.querySelector("#description-span").textContent = description || "No Descriptiopn Available"
         document.querySelector("[number-of-pages]").textContent = pageCount || "N/A"
         document.querySelector("[isebook]").textContent = isEbook
-        document.querySelector("#lang-span").textContent = language || "Unknown"
-        document.querySelector("#maturity-span").textContent = maturityRating || "N/A"
+        document.querySelector("#lang-span").textContent = languageMap[language] || "Unknown"
+        document.querySelector("#maturity-span").textContent = mapMaturityRating(maturityRating)
         document.querySelector("[reading-time]").textContent = `${Math.round(parseFloat(pageCount) / 40).toFixed(1)} hr`
         document.querySelector(".all-categories").innerHTML = beautifyCategories(categories) || "Unknown"
         document.querySelector(".tags-container").innerHTML = categoriesForTags(categories)
