@@ -146,7 +146,9 @@ header {
 .main-nav {
     height: 100%;
     display: flex;
-
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 
@@ -156,7 +158,6 @@ header {
     font-size: 1.6rem;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
     min-width: 150px;
     position: relative;
 }
@@ -338,6 +339,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+    align-items: center;
 
 
 }
@@ -347,7 +349,6 @@ main {
     width: 100%;
     padding-inline: 16px;
     margin-inline: auto;
-
 }
 
 .tab-list button {
@@ -384,17 +385,24 @@ main {
 .tab-panel-5{
     display: none;
     grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    gap: 13px 10px;
+    column-gap: 14px;
+    row-gap: 18px;
+    grid-auto-columns: minmax(14px, auto);
     padding-inline: 16px;
+    width: 100%;
+    place-items: center;
     
 }
 
 .tab-panel-1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    gap: 13px 10px;
-    padding-inline: 16px;
-    
+    column-gap: 14px;
+    row-gap: 18px;
+    grid-auto-columns: minmax(14px, auto);
+    padding-inline: 16px; 
+    width: 100%;
+    place-items: center;
 }
 
 .card {
@@ -409,7 +417,6 @@ main {
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    
 }
 
 .card:hover {
@@ -866,6 +873,7 @@ height: 80%;
     border-bottom-right-radius: 6px;
     gap: 10px;
     font-size: 13px;
+    color: rgb(221, 221, 221);
 
 }
 

@@ -9,7 +9,7 @@ async function fetchBookDetails () {
 
     const book = await fetchBooksByUrlId(bookId)
 
-    
+    console.log(book)
 
     if (book && book.volumeInfo) {
         const {
@@ -23,6 +23,7 @@ async function fetchBookDetails () {
             maturityRating,
             language,
             imageLinks,
+            averageRating
         } = book.volumeInfo 
 
         const isEbook = book.accessInfo.epub?.isAvailable ? "Yes" : "No"
@@ -55,6 +56,19 @@ async function fetchBookDetails () {
             }
         
 
+        function displayStars(rating) {
+            const starsContainer = document.querySelector(".stars-span")
+            const fullStars = Math.floor(rating)
+            const halfStar = rating % 1 >= 0.5 ? 1 : 0
+            const emptyStars = 5 - fullStars - halfStar
+
+            starsContainer.innerHTML = '<i class="fa-solid fa-star" style="color: gold;"></i>'.repeat(fullStars) +
+            (halfStar ? '<i class="fa-solid fa-star-half-alt" style="color: gold;"></i>' : '') +
+            '<i class="fa-solid fa-star" style="color: rgb(221, 221, 221);"></i>'.repeat(emptyStars);
+        }
+        
+        displayStars(averageRating || 0)
+
 
 
         document.querySelector(".detail-book-img").src = imageLinks?.thumbnail || "./assets/images/book-default.jpg"
@@ -71,6 +85,7 @@ async function fetchBookDetails () {
         document.querySelector("[reading-time]").textContent = `${Math.round(parseFloat(pageCount) / 40).toFixed(1)} hr`
         document.querySelector(".all-categories").innerHTML = beautifyCategories(categories) || "Unknown"
         document.querySelector(".tags-container").innerHTML = categoriesForTags(categories)
+        document.querySelector("[average-rating]").textContent = averageRating ? averageRating : "Ratings not available"
 
     }
 }
