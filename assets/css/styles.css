@@ -419,6 +419,23 @@ main {
     border-top-right-radius: 6px;
 }
 
+.skeleton-card {
+    display: flex;
+    background: rgb(245, 245, 245);
+    position: relative;
+    width: 180px;
+    height: 304.2px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    gap: 15px;
+    
+}
+
 .card:hover {
     background: rgb(194, 194, 194);
 }
@@ -558,7 +575,7 @@ main {
     scroll-snap-type: inline mandatory;
     padding-block-end: 5px;
     display: flex;
-    gap: 8px;
+    gap: 16px;
     align-items: stretch;
     justify-content: flex-start;
 }

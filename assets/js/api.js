@@ -103,7 +103,7 @@ export async function searchBooksFromInput(query, bookType, language, price, ava
 export async function searchBooks(query) {
     
     
-    const response = await fetch(`${API_URL}subject:${query}&orderBy=relevance&maxResults=18&key=${API_KEY}`)
+    const response = await fetch(`${API_URL}subject:${query}&orderBy=relevance&maxResults=17&key=${API_KEY}`)
     
     
 

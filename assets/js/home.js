@@ -30,7 +30,7 @@ async function loadTabs (){
 
     panel.innerHTML = ''
 
-    //const books = await searchBooks(tabCategory)
+    const books = await searchBooks(tabCategory)
 
     books.forEach(book => {
         const bookCard = `
@@ -73,6 +73,18 @@ async function loadTabs (){
           attachBookEventListener(bookElement, panel);
 
 
+    })
+    const skeletonCard = `
+    <div category="${panel.getAttribute("category")}" class="skeleton-card">
+              <p>Show More</p> <span class="fa-solid fa-chevron-right"></span>
+            </div></div>
+    `
+    panel.innerHTML += skeletonCard
+
+    const skeletonUrl = panel.querySelector(".skeleton-card")
+
+    skeletonUrl.addEventListener("click", () => {
+      window.location.href = `./books.html?category=${panel.getAttribute("category")}`
     })
 })
 }
@@ -120,7 +132,7 @@ const latestReleasesSlider = document.querySelector('.latest-slider')
 
 
 async function latestReleases() {
-  //const books = await latestReleasesBooks()
+  const books = await latestReleasesBooks()
 
   latestReleasesSlider.innerHTML = ``
 
@@ -166,6 +178,22 @@ async function latestReleases() {
         attachBookEventListener(bookElement, latestReleasesSlider)
 
   })
+
+  const skeletonCard = `
+  <li class="slider-item skeleton-item">
+                <div class="skeleton-card">
+                  <p>Show More</p> <span class="fa-solid fa-chevron-right"></span>
+                </div>
+              </li>
+  `
+  latestReleasesSlider.innerHTML += skeletonCard
+
+  const skeletonUrl = latestReleasesSlider.querySelector(".skeleton-item")
+
+  skeletonUrl.addEventListener("click", () => {
+    window.location.href = `./books.html?search=comedy`
+  })
+
 }
 
 const ratingsSlider = document.querySelector('.ratings-slider')
@@ -218,6 +246,22 @@ async function topRatedBooks() {
     attachBookEventListener(bookElement, ratingsSlider)
 
   })
+
+  const skeletonCard = `
+  <li class="slider-item skeleton-item">
+                <div class="skeleton-card">
+                  <p>Show More</p> <span class="fa-solid fa-chevron-right"></span>
+                </div>
+              </li>
+  `
+  ratingsSlider.innerHTML += skeletonCard
+
+  const skeletonUrl = ratingsSlider.querySelector(".skeleton-item")
+
+  skeletonUrl.addEventListener("click", () => {
+    window.location.href = `./books.html?search=comedy&orderBy=newest`
+  })
+
 }
 
 $searchBtn.addEventListener("click", handleSearch)
