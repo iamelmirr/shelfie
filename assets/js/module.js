@@ -1,3 +1,5 @@
+"use strict"
+
 export function attachBookEventListener(bookElements, booksList) {
   
     
@@ -9,27 +11,35 @@ export function attachBookEventListener(bookElements, booksList) {
 
    }
 
+export function attachSaveButtonListener(saveBtn, bookId) {
+  saveBtn.addEventListener("click", () => {
+    toggleSave(bookId, saveBtn);
+    });
+  }
+
 
 export const isSaved = (bookId) => {
-  return localStorage.getItem(bookId) !== null
+  const savedBooks = JSON.parse(localStorage.getItem("savedBooks")) || []
+  return savedBooks.includes(bookId)
 }
 
 
-export function toggleSave(bookId, bookTitle, button) {
+export function toggleSave(bookId, saveBtn) {
+  
   let savedBooks = JSON.parse(localStorage.getItem("savedBooks")) || []
 
-  const bookIndex = savedBooks.findIndex(book => book.id === bookId)
+  const existingBook = savedBooks.find(book => book.id === bookId)
 
-  if(bookIndex === -1) {
-    const book = { id: bookId, title: bookTitle}
-    savedBooks.push(book)
-    localStorage.setItem("savedBooks", JSON.stringify(savedBooks))
-
-    button.innerHTML = '<span class="fa-solid fa-bookmark"></span>'
+  if (savedBooks.includes(bookId)) {
+  
+    savedBooks = savedBooks.filter(id => id !== bookId);
+    saveBtn.innerHTML = '<span class="fa-regular fa-bookmark"></span>';
   } else {
-    savedBooks.splice(bookIndex, 1) 
-    localStorage.setItem("savedBooks", JSON.stringify(savedBooks))
-
-    button.innerHTML = '<span class="fa-regular fa-bookmark"></span>'
+    
+    savedBooks.push(bookId);
+    saveBtn.innerHTML = '<span class="fa-solid fa-bookmark"></span>';
   }
+  
+  localStorage.setItem("savedBooks", JSON.stringify(savedBooks))
+  console.log(savedBooks)
 }

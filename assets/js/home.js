@@ -5,16 +5,21 @@ import { searchBooks } from "./api.js"
 import { attachBookEventListener } from "./module.js"
 
 import { isSaved } from "./module.js"
+
+import { toggleSave } from "./module.js"
+
+import { attachSaveButtonListener } from "./module.js"
  
 const $tabBtns = document.querySelectorAll("[data-tab-btn]")
 const $tabPanels = document.querySelectorAll("[data-panel]")
 const $searchBtn = document.querySelector(".search-btn")
 const $categoryBtns = document.querySelectorAll("[data-category]")
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   loadTabs()
   latestReleases()
-  topRatedBooks()
+  await topRatedBooks()
+  attachSaveButtonListeners()
 })
 
 
@@ -25,7 +30,7 @@ async function loadTabs (){
 
     panel.innerHTML = ''
 
-    const books = await searchBooks(tabCategory)
+    //const books = await searchBooks(tabCategory)
 
     books.forEach(book => {
         const bookCard = `
@@ -50,9 +55,9 @@ async function loadTabs (){
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
-                      </button>
+                        <button class="icon-btn has-state     removed" savebtn aria-label="Add to saved books">
+                          ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                        </button>
 
                     </div>
 
@@ -62,11 +67,28 @@ async function loadTabs (){
                   
         `
         panel.innerHTML += bookCard
-        const bookElement = panel.lastElementChild
-        attachBookEventListener(bookElement, panel)
-        const saveBtn = bookElement.querySelector(".icon-btn")
+
+        
+          const bookElement = panel.lastElementChild;
+          attachBookEventListener(bookElement, panel);
+
+
     })
 })
+}
+
+
+function attachSaveButtonListeners() {
+  const saveButtons = document.querySelectorAll("[savebtn]")
+
+  saveButtons.forEach(saveBtn => {
+    saveBtn.addEventListener("click", (event) => {
+      const bookCard = event.target.closest(".card")
+      const bookId = bookCard.dataset.id
+
+      toggleSave(bookId, saveBtn)
+    })
+  })
 }
 
 
@@ -98,7 +120,7 @@ const latestReleasesSlider = document.querySelector('.latest-slider')
 
 
 async function latestReleases() {
-  const books = await latestReleasesBooks()
+  //const books = await latestReleasesBooks()
 
   latestReleasesSlider.innerHTML = ``
 
@@ -127,9 +149,9 @@ async function latestReleases() {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
-                      </button>
+                        <button class="icon-btn has-state     removed" savebtn aria-label="Add to saved books">
+                          ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                        </button>
 
                     </div>
 
@@ -180,9 +202,9 @@ async function topRatedBooks() {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
-                      </button>
+                        <button class="icon-btn has-state     removed" savebtn aria-label="Add to saved books">
+                          ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                        </button>
 
                     </div>
 

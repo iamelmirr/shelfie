@@ -240,3 +240,23 @@ export async function fetchBooksByUrlId(bookId) {
     return data
     
 }
+
+
+
+
+export async function fetchBooksByIds(bookIds) {
+
+    const fetchBooks = bookIds.map(id =>
+        fetch(`${API_URL_ID_FETCH}${id}?key=${API_KEY}`).then(response => response.json())
+    )
+
+    const booksData = await Promise.all(fetchBooks)
+
+    return booksData.map(data => ({
+        id: data.id,
+        title: data.volumeInfo.title,
+        authors: data.volumeInfo.authors ? data.volumeInfo.authors.join(", ") : "Unknown",
+        image: data.volumeInfo.imageLinks ? data.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+    }))
+    
+}

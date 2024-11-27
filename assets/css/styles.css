@@ -940,3 +940,41 @@ height: 80%;
 
 
 
+
+
+/* SAVED BOOKS */
+
+.saved-books-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: start;
+    padding-inline: 16px;
+}
+
+.saved-books-main h2 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: start;
+    margin-left: 25px;
+}
+
+
+.saved-books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+    column-gap: 14px;
+    row-gap: 18px;
+    grid-auto-columns: minmax(14px, auto); 
+    width: 100%;
+    place-items: center; 
+}
+
+.fa-circle-xmark {
+    color: rgb(45, 64, 128);
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    font-size: 20px;
+    cursor: pointer;
+}
