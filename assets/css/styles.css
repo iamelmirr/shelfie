@@ -471,17 +471,33 @@ main {
 }
 
 .meta-item {
+    font-size: 1.22rem;
     display: flex;
-    gap: 5px;
+    gap: 10px;
+    align-items: center;
 }
 
 .icon-btn {
-    margin-right: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    padding: 5px;
+    cursor: pointer;
+}
 
+.icon-btn span {
+    font-size: 15px; 
+    color: #419cfd;  
+    transition: color 0.3s ease;
+}
+
+.fa-pen {
+    padding-top: 2px;
 }
 
 .label-medium {
-    font-size: 1.2rem;
     font-weight: 500;
     display: -webkit-box;
     -webkit-line-clamp: 2;

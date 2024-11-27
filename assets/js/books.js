@@ -61,36 +61,34 @@ async function getSearchTermFromUrl () {
           const bookCard = `
           <div class="card" data-id="${book.id}">
 
-                <figure class="card-media img-holder">
-                  <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                    class="img-cover">
-                </figure>
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
 
-                <div class="card-body">
+                  <div class="card-body">
 
-                  <h3 class="title-small">
-                    <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                  </h3>
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
 
-                  <div class="meta-wrapper">
+                    <div class="meta-wrapper">
 
-                    <div class="meta-item">
-                      <i></i>
+                      <div class="meta-item">
+                        <span class="fa-solid fa-pen"></span>
 
-                      <span class="label-medium">${book.authors}</span>
+                        <span class="label-medium">${book.authors}</span>
+                      </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                      </button>
+
                     </div>
-
-                    <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                      <i></i>
-
-                      <i></i>
-                    </button>
 
                   </div>
 
                 </div>
-
-              </div>
                     
           `
           
@@ -110,36 +108,34 @@ async function getSearchTermFromUrl () {
           const bookCard = `
           <div class="card" data-id="${book.id}">
 
-                <figure class="card-media img-holder">
-                  <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                    class="img-cover">
-                </figure>
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
 
-                <div class="card-body">
+                  <div class="card-body">
 
-                  <h3 class="title-small">
-                    <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                  </h3>
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
 
-                  <div class="meta-wrapper">
+                    <div class="meta-wrapper">
 
-                    <div class="meta-item">
-                      <i></i>
+                      <div class="meta-item">
+                        <span class="fa-solid fa-pen"></span>
 
-                      <span class="label-medium">${book.authors}</span>
+                        <span class="label-medium">${book.authors}</span>
+                      </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                      </button>
+
                     </div>
-
-                    <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                      <i></i>
-
-                      <i></i>
-                    </button>
 
                   </div>
 
                 </div>
-
-              </div>
                     
           `
           
@@ -159,36 +155,34 @@ async function getSearchTermFromUrl () {
         const bookCard = `
           <div class="card" data-id="${book.id}">
 
-                <figure class="card-media img-holder">
-                  <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                    class="img-cover">
-                </figure>
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
 
-                <div class="card-body">
+                  <div class="card-body">
 
-                  <h3 class="title-small">
-                    <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                  </h3>
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
 
-                  <div class="meta-wrapper">
+                    <div class="meta-wrapper">
 
-                    <div class="meta-item">
-                      <i></i>
+                      <div class="meta-item">
+                        <span class="fa-solid fa-pen"></span>
 
-                      <span class="label-medium">${book.authors}</span>
+                        <span class="label-medium">${book.authors}</span>
+                      </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                      </button>
+
                     </div>
-
-                    <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                      <i></i>
-
-                      <i></i>
-                    </button>
 
                   </div>
 
                 </div>
-
-              </div>
                     
           `
           booksList.innerHTML += bookCard
@@ -215,36 +209,34 @@ async function getSearchTermFromUrl () {
           const bookCard = `
           <div class="card" data-id="${book.id}">
 
-                <figure class="card-media img-holder">
-                  <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                    class="img-cover">
-                </figure>
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
 
-                <div class="card-body">
+                  <div class="card-body">
 
-                  <h3 class="title-small">
-                    <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                  </h3>
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
 
-                  <div class="meta-wrapper">
+                    <div class="meta-wrapper">
 
-                    <div class="meta-item">
-                      <i></i>
+                      <div class="meta-item">
+                        <span class="fa-solid fa-pen"></span>
 
-                      <span class="label-medium">${book.authors}</span>
+                        <span class="label-medium">${book.authors}</span>
+                      </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                      </button>
+
                     </div>
-
-                    <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                      <i></i>
-
-                      <i></i>
-                    </button>
 
                   </div>
 
                 </div>
-
-              </div>
                     
           `
           
@@ -264,36 +256,34 @@ async function getSearchTermFromUrl () {
           const bookCard = `
           <div class="card" data-id="${book.id}">
 
-                <figure class="card-media img-holder">
-                  <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                    class="img-cover">
-                </figure>
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
 
-                <div class="card-body">
+                  <div class="card-body">
 
-                  <h3 class="title-small">
-                    <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                  </h3>
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
 
-                  <div class="meta-wrapper">
+                    <div class="meta-wrapper">
 
-                    <div class="meta-item">
-                      <i></i>
+                      <div class="meta-item">
+                        <span class="fa-solid fa-pen"></span>
 
-                      <span class="label-medium">${book.authors}</span>
+                        <span class="label-medium">${book.authors}</span>
+                      </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                      </button>
+
                     </div>
-
-                    <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                      <i></i>
-
-                      <i></i>
-                    </button>
 
                   </div>
 
                 </div>
-
-              </div>
                     
           `
           
@@ -313,36 +303,34 @@ async function getSearchTermFromUrl () {
         const bookCard = `
           <div class="card" data-id="${book.id}">
 
-                <figure class="card-media img-holder">
-                  <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                    class="img-cover">
-                </figure>
+                  <figure class="card-media img-holder">
+                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
+                      class="img-cover">
+                  </figure>
 
-                <div class="card-body">
+                  <div class="card-body">
 
-                  <h3 class="title-small">
-                    <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                  </h3>
+                    <h3 class="title-small">
+                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
+                    </h3>
 
-                  <div class="meta-wrapper">
+                    <div class="meta-wrapper">
 
-                    <div class="meta-item">
-                      <i></i>
+                      <div class="meta-item">
+                        <span class="fa-solid fa-pen"></span>
 
-                      <span class="label-medium">${book.authors}</span>
+                        <span class="label-medium">${book.authors}</span>
+                      </div>
+
+                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
+                      </button>
+
                     </div>
-
-                    <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                      <i></i>
-
-                      <i></i>
-                    </button>
 
                   </div>
 
                 </div>
-
-              </div>
                     
           `
           booksList.innerHTML += bookCard

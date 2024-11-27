@@ -3,6 +3,8 @@
 import { searchBooks } from "./api.js"
 
 import { attachBookEventListener } from "./module.js"
+
+import { isSaved } from "./module.js"
  
 const $tabBtns = document.querySelectorAll("[data-tab-btn]")
 const $tabPanels = document.querySelectorAll("[data-panel]")
@@ -43,15 +45,13 @@ async function loadTabs (){
                     <div class="meta-wrapper">
 
                       <div class="meta-item">
-                        <i></i>
+                        <span class="fa-solid fa-pen"></span>
 
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
                       <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                        <i></i>
-
-                        <i></i>
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
                     </div>
@@ -64,6 +64,7 @@ async function loadTabs (){
         panel.innerHTML += bookCard
         const bookElement = panel.lastElementChild
         attachBookEventListener(bookElement, panel)
+        const saveBtn = bookElement.querySelector(".icon-btn")
     })
 })
 }
@@ -121,15 +122,13 @@ async function latestReleases() {
                     <div class="meta-wrapper">
 
                       <div class="meta-item">
-                        <i></i>
+                        <span class="fa-solid fa-pen"></span>
 
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
                       <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                        <i></i>
-
-                        <i></i>
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
                     </div>
@@ -176,15 +175,13 @@ async function topRatedBooks() {
                     <div class="meta-wrapper">
 
                       <div class="meta-item">
-                        <i></i>
+                        <span class="fa-solid fa-pen"></span>
 
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
                       <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
-                        <i></i>
-
-                        <i></i>
+                        ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
                     </div>

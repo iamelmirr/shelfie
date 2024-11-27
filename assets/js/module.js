@@ -8,3 +8,28 @@ export function attachBookEventListener(bookElements, booksList) {
        window.location.href = `./book-details.html?id=${bookId}`}})
 
    }
+
+
+export const isSaved = (bookId) => {
+  return localStorage.getItem(bookId) !== null
+}
+
+
+export function toggleSave(bookId, bookTitle, button) {
+  let savedBooks = JSON.parse(localStorage.getItem("savedBooks")) || []
+
+  const bookIndex = savedBooks.findIndex(book => book.id === bookId)
+
+  if(bookIndex === -1) {
+    const book = { id: bookId, title: bookTitle}
+    savedBooks.push(book)
+    localStorage.setItem("savedBooks", JSON.stringify(savedBooks))
+
+    button.innerHTML = '<span class="fa-solid fa-bookmark"></span>'
+  } else {
+    savedBooks.splice(bookIndex, 1) 
+    localStorage.setItem("savedBooks", JSON.stringify(savedBooks))
+
+    button.innerHTML = '<span class="fa-regular fa-bookmark"></span>'
+  }
+}
