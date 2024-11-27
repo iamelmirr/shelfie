@@ -510,8 +510,6 @@ $ratingFilters.forEach(rating => {
 })
 
 
-
-
 const $clearFiltersBtn = document.querySelector("[clear-filters-btn]")
 
 
@@ -529,7 +527,11 @@ $clearFiltersBtn.addEventListener("click", function () {
   selectedLanguage = null
   bookTypeFilter = null
 
-  localStorage.clear()
+  localStorage.removeItem("chosenRating")
+  localStorage.removeItem("booksPrice")
+  localStorage.removeItem("booksAvailability")
+  localStorage.removeItem("selectedLanguage")
+  localStorage.removeItem("bookTypeFilter")
 
   $applyFiltersBtn.click()
 })
@@ -681,7 +683,7 @@ function loadFromLocalStorage() {
   if(!rating) {
     localStorage.removeItem("chosenRating")
   }
-
+  
   const savedBookTypeFilter = localStorage.getItem("bookTypeFilter")
 
   if(savedBookTypeFilter) {

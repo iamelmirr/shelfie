@@ -44,14 +44,16 @@ async function displaySavedBooks() {
 
                         <span class="label-medium">${book.authors}</span>
                       </div>
-
-                        <button class="icon-btn has-state     removed" removesaved savebtn aria-label="Add to saved books">
+                        <button class="icon-btn has-state removed" removesaved savebtn aria-label="Add to saved books">
                           ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                         </button>
+                        
 
                     </div>
 
                   </div>
+
+                  
 
                 </div>
         `

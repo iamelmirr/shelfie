@@ -18,21 +18,25 @@ export async function searchCategoryFromUrl(category) {
     let books = []
 
     if (data.items) {
-        books = data.items.map(book => ({
-        
-            id: book.id,
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
-            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            averageRating: book.volumeInfo.averageRating || 0,
-            isAvailable: book.saleInfo.saleability === "FOR_SALE" || book.saleInfo.saleability === "FREE"
-        
-        
-    }))
+        books = data.items.map(book => {
+            const authors = book.volumeInfo.authors
+                ? book.volumeInfo.authors.map(name => {
+                    const nameParts = name.split(' ');
+                    const initial = nameParts[0].charAt(0).toUpperCase() + '.';
+                    const lastName = nameParts.slice(1).join(' ');
+                    return `${initial} ${lastName}`;
+                }).join(', ') 
+                : "Unknown author";
 
-    
-
-
+            return {
+                id: book.id,
+                title: book.volumeInfo.title,
+                authors: authors,
+                image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+                averageRating: book.volumeInfo.averageRating || 0,
+                isAvailable: book.saleInfo.saleability === "FOR_SALE" || book.saleInfo.saleability === "FREE",
+            };
+        });
     }
 
     return books
@@ -44,45 +48,50 @@ export async function searchBooksFromInput(query, bookType, language, price, ava
     const fetchUrl = `${API_URL}${query}` + 
         (bookType === "books" ? `&printType=books` : bookType === "ebook" ? `&filter=ebook` : "") + 
         (language ? `&langRestrict=${language}` : "") + 
-        (price ? `$filter=${price}` : "")
+        (price ? `$filter=${price}` : "");
     
-    
-    const response = await fetch(`${fetchUrl}&maxResults=40&key=${API_KEY}`)
-    
-    
+    const response = await fetch(`${fetchUrl}&maxResults=40&key=${API_KEY}`);
+    const data = await response.json();
 
-    const data = await response.json()
-
-    let books = []
+    let books = [];
 
     if (data.items) {
-        books = data.items.map(book => ({
-        
-            id: book.id,
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
-            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            averageRating: book.volumeInfo.averageRating || 0,
-            isAvailable: book.saleInfo.saleability === "FOR_SALE" || book.saleInfo.saleability === "FREE"
-        
-        
-    }))
+        books = data.items.map(book => {
+            const authors = book.volumeInfo.authors
+                ? book.volumeInfo.authors.map(name => {
+                    const nameParts = name.split(' ');
+                    
+                    const initial = nameParts[0].charAt(0).toUpperCase() + '.';
+                    const lastName = nameParts.slice(1).join(' ');
+                    return `${initial} ${lastName}`;
+                }).join(', ') 
+                : "Unknown author";
 
-    if(availability === "yes") {
-        books = books.filter(book => book.isAvailable)
+            return {
+                id: book.id,
+                title: book.volumeInfo.title,
+                authors: authors,
+                image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+                averageRating: book.volumeInfo.averageRating || 0,
+                isAvailable: book.saleInfo.saleability === "FOR_SALE" || book.saleInfo.saleability === "FREE",
+            };
+        });
+
+        
+        if (availability === "yes") {
+            books = books.filter(book => book.isAvailable);
+        }
+
+        
+        if (rating) {
+            const minRating = parseFloat(rating);
+            books = books.filter(book => book.averageRating >= minRating);
+        }
     }
 
-    if(rating) {
-        const minRating = parseFloat(rating)
-        books = books.filter(book => book.averageRating >= minRating)
-    }
-
-
-    }
-
-    return books
-    
+    return books;
 }
+
 
 
 
@@ -104,19 +113,25 @@ export async function searchBooks(query) {
 
     if (data.items) {
         books = data.items.map(book => {
-        return {
-            id: book.id,
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
-            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            
-        }
-        
-    })
+            const authors = book.volumeInfo.authors
+                ? book.volumeInfo.authors.map(name => {
+                    const nameParts = name.split(' ');
+                    const initial = nameParts[0].charAt(0).toUpperCase() + '.';
+                    const lastName = nameParts.slice(1).join(' ');
+                    return `${initial} ${lastName}`;
+                }).join(', ') 
+                : "Unknown author";
+
+            return {
+                id: book.id,
+                title: book.volumeInfo.title,
+                authors: authors,
+                image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+            };
+        });
     }
 
-    return books
-    
+    return books;
 }
 
 
@@ -138,19 +153,26 @@ export async function tabBooks(category) {
 
     if (data.items) {
         books = data.items.map(book => {
-        return {
-            id: book.id,
-            title: book.volumeInfo.title,
-            authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
-            image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-            
-        }
-        
-    })
+            const authors = book.volumeInfo.authors
+                ? book.volumeInfo.authors.map(name => {
+                    const nameParts = name.split(' ');
+                    
+                    const initial = nameParts[0].charAt(0).toUpperCase() + '.';
+                    const lastName = nameParts.slice(1).join(' ');
+                    return `${initial} ${lastName}`;
+                }).join(', ') 
+                : "Unknown author";
+
+            return {
+                id: book.id,
+                title: book.volumeInfo.title,
+                authors: authors,
+                image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+            };
+        });
     }
 
-    return books
-    
+    return books;
 }
 
 
@@ -164,18 +186,26 @@ export async function latestReleasesBooks() {
 
     if (data.items) {
         books = data.items.map(book => {
+            const authors = book.volumeInfo.authors
+                ? book.volumeInfo.authors.map(name => {
+                    const nameParts = name.split(' ');
+                    
+                    const initial = nameParts[0].charAt(0).toUpperCase() + '.';
+                    const lastName = nameParts.slice(1).join(' ');
+                    return `${initial} ${lastName}`;
+                }).join(', ') 
+                : "Unknown author";
+
             return {
                 id: book.id,
                 title: book.volumeInfo.title,
-                authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
+                authors: authors,
                 image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-                
-            }
-        })
+            };
+        });
     }
 
-    return books
-    
+    return books;
 }
 
 
@@ -187,29 +217,34 @@ const authors = [
   ]
 
 
-async function fetchBooksByAuthor(author) {
+  async function fetchBooksByAuthor(author) {
+    const url = `${API_URL}${author}&maxResults=10&key=${API_KEY}`;
 
-    const url = `${API_URL}${author}&maxResults=10&key=${API_KEY}`
+    const response = await fetch(url);
+    const data = await response.json();
 
-    const response = await fetch(url)
-    const data = await response.json()
+    if (data.items) {
+        return data.items.map(book => {
+            const authors = book.volumeInfo.authors
+                ? book.volumeInfo.authors.map(name => {
+                    const nameParts = name.split(' ');
+                    const initial = nameParts[0].charAt(0).toUpperCase() + '.';
+                    const lastName = nameParts.slice(1).join(' ');
+                    return `${initial} ${lastName}`;
+                }).join(', ') 
+                : "Unknown author";
 
-
-    if(data.items) {
-        return data.items.map(book => ({
-            
+            return {
                 id: book.id,
                 title: book.volumeInfo.title,
-                authors: book.volumeInfo.authors ? book.volumeInfo.authors.join(", ") : "Unknown author",
+                authors: authors,
                 image: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
                 averageRating: book.volumeInfo.averageRating || 0,
-                
-            })
-        )
+            };
+        });
     }
 
-    return []
-    
+    return [];
 }
 
 
@@ -252,11 +287,22 @@ export async function fetchBooksByIds(bookIds) {
 
     const booksData = await Promise.all(fetchBooks)
 
-    return booksData.map(data => ({
-        id: data.id,
-        title: data.volumeInfo.title,
-        authors: data.volumeInfo.authors ? data.volumeInfo.authors.join(", ") : "Unknown",
-        image: data.volumeInfo.imageLinks ? data.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
-    }))
-    
+    return booksData.map(data => {
+        const authors = data.volumeInfo.authors
+            ? data.volumeInfo.authors.map(name => {
+                const nameParts = name.split(' ');
+                
+                const initial = nameParts[0].charAt(0).toUpperCase() + '.';
+                const lastName = nameParts.slice(1).join(' ');
+                return `${initial} ${lastName}`;
+            }).join(', ') 
+            : "Unknown author";
+
+        return {
+            id: data.id,
+            title: data.volumeInfo.title,
+            authors: authors,
+            image: data.volumeInfo.imageLinks ? data.volumeInfo.imageLinks.thumbnail : "./assets/images/book-default.jpg",
+        };
+    });
 }

@@ -411,7 +411,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0;
-    width: 176px;
+    width: 180px;
     height: 304.2px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -445,13 +445,17 @@ main {
 .card-body {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+
     padding: 0 1rem;
     flex-grow: 3;
 }
 
+
+
+
+
 .title-small {
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: 600;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -463,11 +467,14 @@ main {
 }
 
 .meta-wrapper {
-    position: relative;
+    position: absolute;
+    width: 88%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
+    bottom: 6px;
+    margin-left: 2px;
+
 }
 
 .meta-item {
@@ -475,6 +482,7 @@ main {
     display: flex;
     gap: 10px;
     align-items: center;
+    max-width: 110px;
 }
 
 .icon-btn {
@@ -485,13 +493,18 @@ main {
     background: none;
     padding: 5px;
     cursor: pointer;
+    place-items: center;
+    border-radius: 100%;
+    background: rgb(229, 233, 245);
+    aspect-ratio: 1/1;
+    height: 33px;
 }
 
-.icon-btn span {
+ .icon-btn span {
     font-size: 15px; 
-    color: #419cfd;  
+    color: #31353a;  
     transition: color 0.3s ease;
-}
+} 
 
 .fa-pen {
     padding-top: 2px;
