@@ -3,11 +3,14 @@
 import { searchBooksFromInput } from "./api.js"
 import { attachBookEventListener } from "./module.js";
 import { searchCategoryFromUrl } from "./api.js";
+import { isSaved } from "./module.js";
+import { toggleSave } from "./module.js";
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  getSearchTermFromUrl()
+document.addEventListener("DOMContentLoaded", async () => {
+  await getSearchTermFromUrl()
   loadFromLocalStorage()
+  attachSaveButtonListeners()
 })
 
 const $noMoreBtn = document.querySelector("[no-more-btn]")
@@ -80,7 +83,7 @@ async function getSearchTermFromUrl () {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                      <button class="icon-btn has-state removed" savebtn aria-label="Add to saved recipes">
                         ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
@@ -127,7 +130,7 @@ async function getSearchTermFromUrl () {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                      <button class="icon-btn has-state removed" savebtn aria-label="Add to saved recipes">
                         ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
@@ -174,7 +177,7 @@ async function getSearchTermFromUrl () {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                      <button class="icon-btn has-state removed" savebtn aria-label="Add to saved recipes">
                         ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
@@ -228,7 +231,7 @@ async function getSearchTermFromUrl () {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                      <button class="icon-btn has-state removed" savebtn aria-label="Add to saved recipes">
                         ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
@@ -275,7 +278,7 @@ async function getSearchTermFromUrl () {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                      <button class="icon-btn has-state removed" savebtn aria-label="Add to saved recipes">
                         ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
@@ -322,7 +325,7 @@ async function getSearchTermFromUrl () {
                         <span class="label-medium">${book.authors}</span>
                       </div>
 
-                      <button class="icon-btn has-state removed" aria-label="Add to saved recipes">
+                      <button class="icon-btn has-state removed" savebtn aria-label="Add to saved recipes">
                         ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
                       </button>
 
@@ -732,6 +735,21 @@ function loadFromLocalStorage() {
     }
   }
 }
+
+function attachSaveButtonListeners() {
+  const saveButtons = document.querySelectorAll("[savebtn]")
+
+  saveButtons.forEach(saveBtn => {
+    saveBtn.addEventListener("click", (event) => {
+      console.log("clicked")
+      const bookCard = event.target.closest(".card")
+      const bookId = bookCard.dataset.id
+
+      toggleSave(bookId, saveBtn)
+    })
+  })
+}
+
 
 console.log(localStorage)
 

@@ -133,7 +133,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 80px;
-    background: hsl(210, 20%, 98%);
+    background: var(--background);
     gap: 20px;
     padding: 0 40px;
     border-bottom: 1px solid rgb(204, 208, 212);
@@ -160,7 +160,13 @@ header {
     justify-content: space-around;
     min-width: 150px;
     position: relative;
+    transition: background 0.3s ease;
 }
+
+.header-btn:hover {
+    background: rgb(221, 221, 221);
+}
+
 
 .home-btn::after {
     
@@ -191,13 +197,19 @@ header {
     align-items: center;
     height: 40px;
     aspect-ratio: 1/1;
-    justify-content: center;
+    place-items: center;
+    background: rgb(239, 243, 255);
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-.themeimg {
-    aspect-ratio: 1/1;
-    height: 25px;
-    
+.themebtn:hover {
+    background: rgb(199, 210, 243);
+}
+
+.themebtn span {
+    color: #31353a;
+    font-size: 23px;
 }
 
 .savedlink {
@@ -208,7 +220,12 @@ header {
     color: white;
     border-radius: 5px;
     padding: 0.8rem 1.7rem;
+    transition: background 0.3s ease;
+}
 
+
+.savedlink:hover {
+    background: rgb(61, 99, 180);
 }
 
 
@@ -232,7 +249,7 @@ main {
     flex-grow: 1;
     align-items: center;
     width: 100%;
-    background: hsl(210, 20%, 98%);
+    background: var(--background);
     padding-bottom: 2rem;
 }
 
@@ -242,7 +259,7 @@ main {
 .hero {
     width: 100%;
     padding: 0 2rem;
-    
+    background: var(--background);
 }
 
 .banner-card {
@@ -265,12 +282,14 @@ main {
     font-weight: 350;
     font-size: 6rem;
     color: aliceblue;
+    user-select: none;
 }
 
 .banner-card p {
     font-size: 1.4rem;
     color: aliceblue;
     letter-spacing: 0.1rem;
+    user-select: none;
 }
 
 .search-wrap {
@@ -279,18 +298,36 @@ main {
     width: 800px;
     height: 72px;
     border-radius: 5px;
-    background: aliceblue;
+    background: rgb(239, 243, 255);
     align-items: center;
+    gap: 20px;
+    transition: background 0.3s ease;
+}
+
+.search-wrap:hover {
+    background: rgb(231, 238, 255);
+}
+
+.search-wrap:hover input {
+    background: rgb(231, 238, 255);
+}
+
+.search-wrap span {
+    font-size: 20px;
+    margin-left: 18px;
 }
 
 .search-wrap input {
-    background: none;
+    background: rgb(239, 243, 255);
     border: none;
     font: inherit;
     width: 100%;
     font-size: 1.4rem;
     outline: none;
-    
+    height: 100%;
+
+    margin-right: 110px;
+    transition: background 0.3s ease;
 }
 
 .searchbookicon {
@@ -306,29 +343,39 @@ main {
     background: var(--primary);
     border: none;
     border-radius: 5px;
-    width: 100px;
-    place-items: center;
     top: 4px;
     right: 4px;
-    bottom: 4px;
+    width: 100px;
+    height: 64px;
+    place-items: center;
+    transition: background 0.3s ease;
 }
 
-.search-btn img {
-    display: grid;
-    aspect-ratio: 1/1;
-    height: 25px;
+.search-btn:hover {
+    background: rgb(61, 99, 180)
+}
+
+.search-btn span {
+    font-size: 18px;
+    text-align: center;
+    margin-right: 18px;
+    color: rgb(247, 251, 255);
 }
 
 
 
-/* TAB SELECTOR */
+
+
+
+
+/*  SELECTOR */
 
 .tab-section {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    background: var(--background);
 }
 
 
@@ -357,11 +404,18 @@ main {
     border-bottom: 1px solid rgb(204, 208, 212);
     padding: 2.5rem;
     width: 20%;
-    font-size: 1.5rem;
+    font-size: 15px;
     font-weight: 500;
     position: relative;
-
+    color: rgb(85, 85, 85);
+    transition: background-color 0.3s ease;
+    transition: color 0.2s ease;
 }
+
+.tab-list button:hover {
+    background: rgb(221, 221, 221);
+}
+
 
 
 .tab-btn.active::after {
@@ -374,6 +428,10 @@ main {
     border-top-right-radius: 20px;
     left: 0;
     bottom: 0;
+}
+
+.tab-btn.active {
+    color: #1e2022;
 }
 
 
@@ -406,22 +464,84 @@ main {
 }
 
 .card {
-    background: rgb(245, 245, 245);
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 10px;
+    width: 180px;
+    height: 326px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    transition: background-color 0.3s ease
+}
+
+.skeleton-book {
+    display: flex;
+    position: relative;
+    flex-direction: column;
     width: 180px;
     height: 304.2px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    align-items: center;
+    gap: 22px;
+    animation: loadingAnimation 1.5s infinite ease-in-out;
+}
+
+
+@keyframes loadingAnimation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.skeleton-image {
+    display: flex;
+    background: rgb(182, 182, 182);
+    width: 160px;
+    height: 235px;
+    border-radius: 12px;
+}
+
+.skeleton-meta {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 40px;
+    gap: 10px;
+}
+
+.skeleton-title {
+    display: flex;
+    width: 100px;
+    height: 16px;
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+
+.skeleton-author {
+    
+        display: flex;
+        width: 130px;
+        height: 14px;
+        background: rgb(182, 182, 182);
+        border-radius: 3px;
+    
 }
 
 .skeleton-card {
     display: flex;
-    background: rgb(245, 245, 245);
+    background: rgb(239, 243, 255);
     position: relative;
     width: 180px;
     height: 304.2px;
@@ -433,18 +553,23 @@ main {
     justify-content: center;
     font-size: 12px;
     gap: 15px;
-    
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.skeleton-card:hover {
+    background: rgb(199, 210, 243);
 }
 
 .card:hover {
-    background: rgb(194, 194, 194);
+    background: rgb(221, 221, 221);
 }
 
 .img-holder {
     display: flex;
-    width: 176px;
-    height: 226px;
-    border-radius: 12px;
+    width: 100%;
+    height: 238px;
+    border-radius: 6px;
     overflow: hidden;
     place-items: center;
     justify-content: center;
@@ -453,8 +578,8 @@ main {
 .img-holder img {
     display: grid;
     object-fit: fill;
-    width: 85%;
-    height: 88%;
+    width: 100%;
+    height: 100%;
     border-radius: 3px;
     
 }
@@ -463,7 +588,7 @@ main {
     display: flex;
     flex-direction: column;
 
-    padding: 0 1rem;
+    padding: 0 7px;
     flex-grow: 3;
 }
 
@@ -485,7 +610,7 @@ main {
 
 .meta-wrapper {
     position: absolute;
-    width: 88%;
+    width: 92%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -499,7 +624,7 @@ main {
     display: flex;
     gap: 10px;
     align-items: center;
-    max-width: 110px;
+    max-width: 115px;
 }
 
 .icon-btn {
@@ -512,9 +637,14 @@ main {
     cursor: pointer;
     place-items: center;
     border-radius: 100%;
-    background: rgb(229, 233, 245);
+    background: rgb(239, 243, 255);
     aspect-ratio: 1/1;
     height: 33px;
+    transition: background 0.3s ease;
+}
+
+.icon-btn:hover {
+    background: rgb(199, 210, 243);
 }
 
  .icon-btn span {
@@ -535,6 +665,7 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 125px;
+    user-select: none;
 }
 
 
@@ -550,7 +681,7 @@ main {
     padding-top: 3rem;
     padding-inline: 16px;
     max-width: 1290px;
-    
+    background: var(--background);
 }
 
 .slider-1,
@@ -567,6 +698,7 @@ main {
 .slider-2 h2 {
     font-size: 2.5rem;
     font-weight: 250;
+    user-select: none;
 }
 
 .slider {
@@ -578,7 +710,35 @@ main {
     gap: 16px;
     align-items: stretch;
     justify-content: flex-start;
+
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(211, 211, 211, 0.6) transparent;
 }
+
+.slider::-webkit-scrollbar {
+    height: 6px; 
+    width: 4px; 
+}
+
+.slider::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+.slider::-webkit-scrollbar-thumb {
+    background: rgba(150, 150, 150, 0.6);
+    border-radius: 10px; 
+}
+
+.slider::-webkit-scrollbar-thumb:hover {
+    background: rgba(145, 145, 145, 0.8); 
+}
+
+.slider::-webkit-scrollbar-button {
+    display: none;
+}
+
+
+
 
 .slider-item {
     min-height: 270px;
@@ -601,6 +761,7 @@ main {
     font-size: 4.8rem;
     font-family: 'DM Serif Display', serif;
     font-weight: 400;
+    user-select: none;
 }
 
 .preference p {
@@ -608,6 +769,7 @@ main {
     max-width: 50ch;
     margin-inline: auto;
     text-align: center;
+    user-select: none;
 }
 
 .tag-div {
@@ -623,6 +785,11 @@ main {
     font-size: 1.35rem;
     align-items: center;
     border-radius: 16px;
+    transition: background 0.3s ease;
+}
+
+.tag-div a:hover {
+    background: rgb(129, 211, 238);
 }
 
 
@@ -644,6 +811,7 @@ footer img {
 
 footer p {
     font-size: 1.3rem;
+    user-select: none;
 }
 
 
@@ -784,6 +952,9 @@ footer p {
     align-items: center;
     justify-content: center;
 }
+
+
+/* SKELETON */
 
 
 

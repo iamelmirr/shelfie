@@ -28,9 +28,11 @@ async function loadTabs (){
     $tabPanels.forEach(async (panel) => {
     const tabCategory = panel.getAttribute("category")
 
-    panel.innerHTML = ''
+    
 
-    const books = await searchBooks(tabCategory)
+    //const books = await searchBooks(tabCategory)
+
+    panel.innerHTML = ''
 
     books.forEach(book => {
         const bookCard = `
@@ -202,7 +204,7 @@ const ratingsSlider = document.querySelector('.ratings-slider')
 import { chooseTopBooks } from './api.js'
 
 async function topRatedBooks() {
-  const books = await chooseTopBooks()
+  //const books = await chooseTopBooks()
 
   ratingsSlider.innerHTML = ``
 
