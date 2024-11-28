@@ -9,8 +9,10 @@ import { toggleSave } from "./module.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await getSearchTermFromUrl()
+  await noBooksDisplay()
   loadFromLocalStorage()
-  attachSaveButtonListeners()
+  await attachSaveButtonListeners()
+  expandFilterContent()
 })
 
 const $noMoreBtn = document.querySelector("[no-more-btn]")
@@ -750,6 +752,61 @@ function attachSaveButtonListeners() {
   })
 }
 
+
+function expandFilterContent() {
+  
+  const filterButtons = document.querySelectorAll(".filter-part-btn");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+      // Toggle aria-expanded attribute
+      button.setAttribute("aria-expanded", !isExpanded);
+
+      // Find the icon element
+      const icon = button.querySelector(".fa-chevron-down, .fa-chevron-up");
+
+      // Toggle icon classes
+      if (icon) {
+        icon.classList.toggle("fa-chevron-down", isExpanded);
+        icon.classList.toggle("fa-chevron-up", !isExpanded);
+      }
+
+      // Find and animate the corresponding .filter-contents
+      const filterContents = button.nextElementSibling;
+      if (filterContents && filterContents.classList.contains("filter-contents")) {
+        if (!isExpanded) {
+          filterContents.style.display = "block"; // Ensure the element is visible
+          filterContents.offsetHeight; // Trigger reflow for CSS transition
+          filterContents.classList.add("open");
+        } else {
+          filterContents.classList.remove("open");
+          filterContents.addEventListener(
+            "transitionend",
+            () => (filterContents.style.display = "none"),
+            { once: true }
+          );
+        }
+      }
+    });
+  });
+  
+}
+
+function noBooksDisplay() {
+  const booksListItem = document.querySelector(".books-list")
+
+  if(booksListItem.innerHTML.trim() === "" ) {
+    const booksContainer = document.querySelector(".books-container")
+
+    if (!booksContainer.querySelector(".no-books-div")) {
+      booksContainer.innerHTML += `
+        <div class="no-books-div"><p>There are no books :(</p></div>
+      `;
+    }
+  }
+}
 
 console.log(localStorage)
 

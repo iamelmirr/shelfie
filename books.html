@@ -46,8 +46,8 @@
 
         <div class="header-part">
         <button class="themebtn" theme-btn>
-            <img class="themeimg" src="./assets/images/moonblack.svg" alt="darkmode">
-            <!-- <img src="./assets/images/lightmode.svg" alt="lightmode"> -->
+            <span class="fa-regular fa-moon"></span>
+          <!-- <span class="fa-regular fa-sun"></span> -->
         </button>
 
         <a class="savedlink" href="saved-books.html">
@@ -62,25 +62,33 @@
         <article class="article">
             <div class="filter-bar">
                 <div class="filter-title-wrapper">
-                    <span>FI</span>
+                    <span class="fa-solid fa-filter"></span>
                     <p>Filters</p>
                 </div>
                 <div class="filter-content">
                     <div class="search-wrapper">
                         <div class="input-content">
-                            <label for="search" class="">Search</label>
-                            <input books-search type="search" name="search" placeholder="Search books">
+                            
+                            <input books-search 
+                            type="search" 
+                            name="search" 
+                            id="search" 
+                            placeholder=" "
+                            title="" 
+                            required>
+                            <label for="search">Search</label>
                         </div>
+                        
                     </div>
 
 
                     <div class="filter-part">
-                        <button class="filter-part-btn" aria-expanded="true">
-                            <i>BT</i>
+                        <button class="filter-part-btn" aria-expanded="false">
+                            <span class="fa-solid fa-book"></span>
                             <p>Book type</p>
-                            <i>AD</i>
+                            <span class="fa-solid fa-chevron-down"></span>
                         </button>
-                        <div class="filter-content">
+                        <div class="filter-contents">
                             <div class="filter-options">
                                 <label class="filter-chip filter-option" filter-clicked="false" book-type-filter="books">Book</label>
                                 <label class="filter-chip filter-option" filter-clicked="false" book-type-filter="ebook">Ebook</label>
@@ -90,12 +98,12 @@
 
 
                     <div class="filter-part">
-                        <button class="filter-part-btn" aria-expanded="true">
-                            <i>BT</i>
+                        <button class="filter-part-btn" aria-expanded="false">
+                            <span class="fa-solid fa-language"></span>
                             <p>Language</p>
-                            <i>AD</i>
+                            <span class="fa-solid fa-chevron-down"></span>
                         </button>
-                        <div class="filter-content">
+                        <div class="filter-contents">
                             <div class="filter-options">
                                 <label class="filter-chip filter-option" filter-clicked="false" lan-filter="en">English</label>
                                 <label class="filter-chip filter-option" filter-clicked="false" lan-filter="es">Spanish</label>
@@ -111,12 +119,12 @@
 
 
                     <div class="filter-part">
-                        <button class="filter-part-btn" aria-expanded="true">
-                            <i>BT</i>
+                        <button class="filter-part-btn" aria-expanded="false">
+                            <span class="fa-regular fa-circle-check"></span>
                             <p>Availability</p>
-                            <i>AD</i>
+                            <span class="fa-solid fa-chevron-down"></span>
                         </button>
-                        <div class="filter-content">
+                        <div class="filter-contents">
                             <div class="filter-options">
                                 <label class="filter-chip filter-option" filter-clicked="false" avail-filter="yes">Available</label>
                             </div>
@@ -124,12 +132,12 @@
                     </div>
 
                     <div class="filter-part">
-                        <button class="filter-part-btn" aria-expanded="true">
-                            <i>BT</i>
+                        <button class="filter-part-btn" aria-expanded="false">
+                            <span class="fa-solid fa-dollar-sign"></span>
                             <p>Price</p>
-                            <i>AD</i>
+                            <span class="fa-solid fa-chevron-down"></span>
                         </button>
-                        <div class="filter-content">
+                        <div class="filter-contents">
                             <div class="filter-options">
                                 <label
                                  class="filter-chip filter-option" filter-clicked="false" price-filter="free-ebooks">Free Ebooks</label>
@@ -139,12 +147,12 @@
                     </div>
 
                     <div class="filter-part">
-                        <button class="filter-part-btn" aria-expanded="true">
-                            <i>S</i>
+                        <button class="filter-part-btn" aria-expanded="false">
+                            <span class="fa-regular fa-star"></span>
                             <p>Ratings</p>
-                            <i>AD</i>
+                            <span class="fa-solid fa-chevron-down"></span>
                         </button>
-                        <div class="filter-content">
+                        <div class="filter-contents">
                             <div class="filter-options">
                                 <label class="filter-chip filter-option" filter-clicked="false" rating-filter="1+">1+</label>
                                 <label class="filter-chip filter-option" filter-clicked="false" rating-filter="1.5+">1.5+</label>
@@ -174,9 +182,10 @@
 
 
                 </div>
+                
                 <div class="load-more-container">
                     <button class="load-more" load-more-btn>Load More</button>
-                    <button class="load-more no more books" no-more-btn>No more books</button>
+                    <button class="no-more-btn" no-more-btn>No more books</button>
                   </div>
             </div>
         </article>

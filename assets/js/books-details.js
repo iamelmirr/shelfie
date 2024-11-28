@@ -111,8 +111,17 @@ async function fetchBookDetails () {
         document.querySelector("#lang-span").textContent = languageMap[language] || "Unknown"
         document.querySelector("#maturity-span").textContent = mapMaturityRating(maturityRating)
         document.querySelector("[reading-time]").textContent = `${Math.round(parseFloat(pageCount) / 40).toFixed(1)} hr`
-        document.querySelector(".all-categories").innerHTML = beautifyCategories(categories) || "Unknown"
-        document.querySelector(".tags-container").innerHTML = categoriesForTags(categories)
+        
+        if (categories && Array.isArray(categories) && categories.length > 0) {
+            document.querySelector(".all-categories").innerHTML = beautifyCategories(categories);
+            document.querySelector(".tags-container").innerHTML = categoriesForTags(categories);
+        } else {
+            console.warn("No categories available");
+            document.querySelector(".all-categories").innerHTML = "No categories available";
+            document.querySelector(".tags-container").innerHTML = `<div class="tag">No tags</div>`;
+        }
+
+
         document.querySelector("[average-rating]").textContent = averageRating ? averageRating : "Ratings not available"
 
     }
