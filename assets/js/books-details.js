@@ -116,13 +116,27 @@ async function fetchBookDetails () {
             document.querySelector(".all-categories").innerHTML = beautifyCategories(categories);
             document.querySelector(".tags-container").innerHTML = categoriesForTags(categories);
         } else {
-            console.warn("No categories available");
             document.querySelector(".all-categories").innerHTML = "No categories available";
             document.querySelector(".tags-container").innerHTML = `<div class="tag">No tags</div>`;
         }
 
 
-        document.querySelector("[average-rating]").textContent = averageRating ? averageRating : "Ratings not available"
+        averageRating ?  averageRatinFunc(averageRating)  :  noAverageRating()
+        
+
+
+        
+
 
     }
+}
+
+
+function averageRatinFunc(averageRatingss) {
+    document.querySelector("[average-rating]").textContent = averageRatingss
+}
+
+function noAverageRating() {
+    document.querySelector("[average-rating]").textContent = "Ratings not available"
+            document.querySelector("[rating-rest]").style.display = "none"
 }
