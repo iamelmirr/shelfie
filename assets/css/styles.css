@@ -95,32 +95,16 @@ html {
     font-family: 'DM Sans', sans-serif;
     font-size: 62.5%;
     scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent;
-    scrollbar-width: 8px; 
-    scrollbar-color: rgba(211, 211, 211, 0.6) transparent;
+    overflow-y: auto;
   }
 
-  
 html::-webkit-scrollbar {
-    height: 6px; 
-    width: 4px; 
-}
+    width: 0;
+}  
 
-html::-webkit-scrollbar-track {
-    background: transparent; 
-}
-
-html::-webkit-scrollbar-thumb {
-    background: rgba(150, 150, 150, 0.6);
-    border-radius: 10px; 
-}
-
-html::-webkit-scrollbar-thumb:hover {
-    background: rgba(145, 145, 145, 0.8); 
-}
-
-html::-webkit-scrollbar-button {
-    display: none;
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
   
@@ -141,7 +125,6 @@ body {
     padding-block-start: 96px;
     min-height: 100vh;
     font-family: 'DM Sans', sans-serif;
-
 }
 
 
@@ -159,23 +142,19 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 64px;
     background: var(--background);
-    gap: 20px;
-    padding: 0 40px;
+    padding: 0 25px;
     border-bottom: 1px solid rgb(204, 208, 212);
 }
 
 .header-logo {
-    height: 4rem;
+    height: 3.5rem;
 }
 
 .main-nav {
     height: 100%;
-    display: flex;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    display: none;
 }
 
 
@@ -245,7 +224,7 @@ header {
 }
 
 .savedlink {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0.7rem;
     background: var(--primary);
@@ -315,6 +294,7 @@ main {
     font-size: 6rem;
     color: aliceblue;
     user-select: none;
+    text-align: center;
 }
 
 .banner-card p {
@@ -322,12 +302,14 @@ main {
     color: aliceblue;
     letter-spacing: 0.1rem;
     user-select: none;
+    text-align: center;
 }
 
 .search-wrap {
     display: flex;
     position: relative;
-    width: 800px;
+    width: 90%;
+    max-width: 800px;
     height: 72px;
     border-radius: 5px;
     background: rgb(239, 243, 255);
@@ -377,7 +359,7 @@ main {
     border-radius: 5px;
     top: 4px;
     right: 4px;
-    width: 100px;
+    width: 80px;
     height: 64px;
     place-items: center;
     transition: background 0.3s ease;
@@ -434,14 +416,15 @@ main {
     border: none;
     background: inherit;
     border-bottom: 1px solid rgb(204, 208, 212);
-    padding: 2.5rem;
     width: 20%;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 500;
     position: relative;
     color: rgb(85, 85, 85);
     transition: background-color 0.3s ease;
     transition: color 0.2s ease;
+    place-items: center;
+    height: 71px;
 }
 
 .tab-list button:hover {
@@ -795,6 +778,7 @@ main {
     font-family: 'DM Serif Display', serif;
     font-weight: 400;
     user-select: none;
+    text-align: center;
 }
 
 .preference p {
@@ -836,10 +820,16 @@ footer {
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
+    margin-bottom: 80px;
 }
 
 footer img {
+    display: none;
     height: 48px;
+}
+
+footer a {
+    display: none;
 }
 
 footer p {
@@ -1126,6 +1116,17 @@ footer p {
     flex-direction: column;
 }
 
+.title-wrapper {
+    width: 100%;
+    padding: 0 15px;
+    justify-content: space-between;
+}
+
+.title-wrapper h2 {
+    font-size: 22px;
+    font-weight: 300;
+}
+
 
 
 .books-list {
@@ -1136,6 +1137,7 @@ footer p {
     grid-auto-columns: minmax(17px, auto);
     padding-inline: 16px; 
     width: 100%;
+    place-items: center;
 }
 
 
@@ -1565,9 +1567,165 @@ height: 80%;
   
   #popup-notification.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-80px);
   }
   
   .hidden {
     display: none;
   }
+
+  .mobile-nav {
+    position: fixed;
+    height: 80px;
+    bottom: 0;
+    width: 100%;
+    background: rgb(239, 243, 255);
+    z-index: 3;
+    place-items: center;
+    box-shadow: 0px -1px 10px rgba(192, 192, 192, 0.5);
+  }
+
+  .mobile-btns {
+    height: 100%;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px 0;
+    align-items: center;
+  }
+
+  .mobile-btn {
+    display: flex;
+    flex-direction: column;
+    width: 33.3%;
+    align-items: center;
+    color: rgb(104, 104, 104);
+    gap: 2px;
+  }
+
+  .mobile-btn span {
+    font-size: 18px;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+
+  .item-icon {
+    display: grid;
+    width: 60px;
+    height: 30px;
+    place-items: center;
+    border-radius: 15px;
+  }
+
+  .mainbtn {
+    background: rgb(199, 212, 248);
+  }
+
+  .mobilemain {
+    color: #28292b;
+  }
+
+  .secondary:hover {
+    background: #cfcfcf;
+  }
+
+  .mobile-btn p {
+    font-size: 13px;
+    font-weight: 550;
+  }
+
+
+
+
+
+
+  @media (min-width: 450px) {
+    .tab-list button {
+        font-size: 14px;
+    }
+  }
+
+  @media (min-width: 500px) {
+    .search-btn {
+        
+        width: 100px;
+        
+    }
+  }
+
+
+  @media (min-width: 768px) {
+
+
+    header {
+        
+        
+        height: 80px;
+        
+    }
+
+    
+    .header-logo {
+    height: 4rem;
+    }
+
+    .main-nav {
+        
+        display: flex;
+    }
+
+
+    .savedlink {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+
+    footer a {
+        display: grid;
+    }
+
+    footer img {
+        display: block;
+    }
+
+    footer {
+        margin-bottom: 0;
+    }
+
+    .tab-list button {
+        font-size: 15px;
+    }
+
+    html {
+        overflow-y: auto;
+    }
+
+    html::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    html{
+        -ms-overflow-style: auto;
+        scrollbar-width: auto;
+    }
+
+    html::-webkit-scrollbar-thumb {
+        background-color: #ccc; 
+        border-radius: 4px;
+    }
+    
+    html::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+
+    #popup-notification.show {
+        
+        transform: translateY(0);
+      }
+    
+  }
+
+  
