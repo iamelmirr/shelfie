@@ -34,12 +34,28 @@ export function toggleSave(bookId, saveBtn) {
   
     savedBooks = savedBooks.filter(id => id !== bookId);
     saveBtn.innerHTML = '<span class="fa-regular fa-bookmark"></span>';
+    showPopupMessage("Book removed.")
   } else {
     
     savedBooks.push(bookId);
     saveBtn.innerHTML = '<span class="fa-solid fa-bookmark"></span>';
+    showPopupMessage("Book saved.")
   }
   
   localStorage.setItem("savedBooks", JSON.stringify(savedBooks))
   console.log(savedBooks)
+}
+
+
+function showPopupMessage(message) {
+  const popup = document.getElementById("popup-notification");
+  popup.textContent = message;
+  popup.classList.remove("hidden");
+  popup.classList.add("show");
+
+  
+  setTimeout(() => {
+    popup.classList.remove("show");
+    popup.classList.add("hidden");
+  }, 3000);
 }

@@ -49,8 +49,10 @@ async function getSearchTermFromUrl () {
   console.log(searchTerm)
   
   if(category) {
-      booksList.innerHTML = ``
-      const books = await searchCategoryFromUrl(category)
+
+    const books = await searchCategoryFromUrl(category)
+
+    booksList.innerHTML = ``
 
       if (books.length > 20) {
 
@@ -197,8 +199,8 @@ async function getSearchTermFromUrl () {
     }
   
   } else if(searchTerm) {
-      booksList.innerHTML = ``
-      const books = await searchBooksFromInput(searchTerm, bookType, language, price, availability, rating)
+    const books = await searchBooksFromInput(searchTerm, bookType, language, price, availability, rating)
+    booksList.innerHTML = ``
 
       if (books.length > 20) {
 

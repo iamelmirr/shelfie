@@ -21,6 +21,7 @@
     <script src="./assets/js/theme.js"></script>
     <script type="module" src="./assets/js/api.js"></script>
     <script type="module" src="./assets/js/config.js"></script>
+    <script type="module" src="./assets/js/module.js"></script>
 </head>
 <body class="details-body">
 
@@ -63,12 +64,50 @@
     <main id="details-main">
 
 
+        <div class="detail-skeleton">
+            <div class="book-box-skeleton">
+                <div class="book-box-image"></div>
+                <div class="book-box-btns">
+                    <div class="book-box-btn"></div>
+                    <div class="book-box-btn"></div>
+                </div>
+            </div>
+            <div class="book-details-skeleton">
+                <div class="book-title-wrapper-skeleton"></div>
+                <div class="author-wrapper-skeleton"></div>
+                <div class="stats-skeleton">
+                    <div class="stat-skeleton">
+                        <div class="stat-big"></div>
+                        <div class="stat-small"></div>
+
+                    </div>
+                    <div class="stat-skeleton">
+                        <div class="stat-big"></div>
+                        <div class="stat-small"></div>
+                        
+                    </div>
+                    <div class="stat-skeleton">
+                        <div class="stat-big"></div>
+                        <div class="stat-small"></div>
+                        
+                    </div>
+                </div>
+                <div class="tags-skeleton">
+                    <div class="tag-skeleton"></div>
+                    <div class="tag-skeleton"></div>
+                    <div class="tag-skeleton"></div>
+                </div>
+                <div class="details-skeleton"></div>    
+            </div>
+        </div>
+
+
         <article class="detail-article">
             <div class="book-img">
                 <img src="" alt="book-img" class="detail-book-img">
 
                 <div class="book-btns">
-                <a class="detail-link" gb-link>View on Google Books</a>
+                <a class="detail-link" gb-link target="_blank">View on Google Books</a>
                 <a class="detail-link" pdf-link href="http://books.google.com/books/download/British_Comedy_Cinema-sample-pdf.acsm?id=NHiCiLUC9JsC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api" target="_blank">Download Sample PDF</a>
             </div>
 
@@ -77,7 +116,7 @@
             <div class="detail-content">
                 <div class="detail-title-wrapper">
                     <h2>This is the title of the book that should be wrapped</h2>
-                    <button class="save-btn"><i class="fa-regular fa-bookmark"></i> <p>Save Book</p></button>
+                    <button class="save-btn"><i class="fa-regular fa-bookmark"></i> <p>Save</p></button>
                 </div>
                 <div class="authors-wrapper">
                     <span class="author">Author(s):</span>
@@ -187,6 +226,8 @@
             <img src="./assets/images/lightlogo2.png" alt="lightlogo2"></a>
         <p>Powered by Google Books API</p>
     </footer>
+
+    <div id="popup-notification" class="hidden"></div>
 
 
     <script type="module" src="./assets/js/books-details.js"></script>

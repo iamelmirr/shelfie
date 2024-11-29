@@ -30,7 +30,7 @@ async function loadTabs (){
 
     
 
-    //const books = await searchBooks(tabCategory)
+    const books = await searchBooks(tabCategory)
 
     panel.innerHTML = ''
 
@@ -204,7 +204,7 @@ const ratingsSlider = document.querySelector('.ratings-slider')
 import { chooseTopBooks } from './api.js'
 
 async function topRatedBooks() {
-  //const books = await chooseTopBooks()
+  const books = await chooseTopBooks()
 
   ratingsSlider.innerHTML = ``
 

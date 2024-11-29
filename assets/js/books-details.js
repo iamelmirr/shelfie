@@ -1,4 +1,5 @@
 import { fetchBooksByUrlId } from "./api.js"
+import { isSaved, toggleSave } from "./module.js"
 
 document.addEventListener("DOMContentLoaded", fetchBookDetails)
 
@@ -23,10 +24,16 @@ async function fetchBookDetails () {
             maturityRating,
             language,
             imageLinks,
-            averageRating
+            averageRating,
+            previewLink
         } = book.volumeInfo 
 
         const isEbook = book.accessInfo.epub?.isAvailable ? "Yes" : "No"
+
+
+        const pdfDownload = book.accessInfo.pdf.acsTokenLink
+
+
 
 
         function beautifyCategories(allCategories) {
@@ -105,12 +112,14 @@ async function fetchBookDetails () {
         document.querySelector(".book-author").textContent =  authors ? authors.join(", ") : "Unknown Author"
         document.querySelector("#publisher").textContent = publisher || "Unknown Publisher"
         document.querySelector("#published-date").textContent = publishedDate || "Unknown Date"
-        document.querySelector("#description-span").textContent = description || "No Descriptiopn Available"
+        document.querySelector("#description-span").textContent = stripHtmlTags(description) || "No Descriptiopn Available"
         document.querySelector("[number-of-pages]").textContent = pageCount || "N/A"
         document.querySelector("[isebook]").textContent = isEbook
         document.querySelector("#lang-span").textContent = languageMap[language] || "Unknown"
         document.querySelector("#maturity-span").textContent = mapMaturityRating(maturityRating)
         document.querySelector("[reading-time]").textContent = `${Math.round(parseFloat(pageCount) / 40).toFixed(1)} hr`
+        document.querySelector("[gb-link]").href = previewLink ? previewLink : "/"
+        document.querySelector("[pdf-link]").href = pdfDownload ? pdfDownload : "/"
         
         if (categories && Array.isArray(categories) && categories.length > 0) {
             document.querySelector(".all-categories").innerHTML = beautifyCategories(categories);
@@ -122,11 +131,33 @@ async function fetchBookDetails () {
 
 
         averageRating ?  averageRatinFunc(averageRating)  :  noAverageRating()
+
+
+        const saveBtn = document.querySelector(".save-btn")
+        if(isSaved(bookId)) {
+            saveBtn.innerHTML = `<i class="fa-solid fa-bookmark"></i> <p>Remove</p>`
+        } else {
+            saveBtn.innerHTML = `<i class="fa-regular fa-bookmark"></i> <p>Save</p>`
+        }
+
+        saveBtn.addEventListener("click", () => {
+            toggleSave(bookId, saveBtn)
+
+            if(isSaved(bookId)) {
+                saveBtn.innerHTML = `<i class="fa-solid fa-bookmark"></i> <p>Remove</p>`
+            } else {
+                saveBtn.innerHTML = `<i class="fa-regular fa-bookmark"></i> <p>Save</p>`
+            }
+        })
+        
+        function stripHtmlTags(input) {
+            return input.replace(/<\/?[^>]+(>|$)/g, "")
+        }
+
         
 
-
-        
-
+        document.querySelector(".detail-skeleton").style.display = "none"
+        document.querySelector(".detail-article").style.display = "flex"
 
     }
 }

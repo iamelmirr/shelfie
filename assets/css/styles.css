@@ -257,7 +257,7 @@ header {
 
 
 .savedlink:hover {
-    background: rgb(61, 99, 180);
+    background: var(--primary-hover);
 }
 
 
@@ -475,9 +475,9 @@ main {
 .tab-panel-5{
     display: none;
     grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    column-gap: 14px;
+    column-gap: 17px;
     row-gap: 18px;
-    grid-auto-columns: minmax(14px, auto);
+    grid-auto-columns: minmax(17px, auto);
     padding-inline: 16px;
     width: 100%;
     place-items: center;
@@ -487,9 +487,9 @@ main {
 .tab-panel-1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    column-gap: 14px;
+    column-gap: 17px;
     row-gap: 18px;
-    grid-auto-columns: minmax(14px, auto);
+    grid-auto-columns: minmax(17px, auto);
     padding-inline: 16px; 
     width: 100%;
     place-items: center;
@@ -576,7 +576,7 @@ main {
     background: rgb(239, 243, 255);
     position: relative;
     width: 180px;
-    height: 304.2px;
+    height: 326px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
@@ -1131,9 +1131,9 @@ footer p {
 .books-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    column-gap: 14px;
+    column-gap: 17px;
     row-gap: 18px;
-    grid-auto-columns: minmax(14px, auto);
+    grid-auto-columns: minmax(17px, auto);
     padding-inline: 16px; 
     width: 100%;
 }
@@ -1195,12 +1195,120 @@ footer p {
 
 #details-main {
     margin-top: 30px;
-    min-height: calc(100vh - 30px);
+    min-height: calc(100vh - 230px);
     
 }
 
-.detail-article {
+.detail-skeleton {
     display: flex;
+    width: 90%;
+    max-width: 1130px;
+    padding: 0 50px;
+    height: 100%;
+    flex: 1;
+    animation: loadingAnimation 1.5s infinite ease-in-out;
+}
+
+.book-box-skeleton {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 0 30px;
+    gap: 20px;
+}
+
+.book-box-image {
+    background: rgb(182, 182, 182);
+    aspect-ratio: 5/7;
+    border-radius: 2px;
+}
+
+.book-box-btns {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 0 20px;
+    justify-content: center;
+}
+
+.book-box-btn {
+    background: rgb(182, 182, 182);
+    width: 45%;
+    height: 20px;
+    border-radius: 2px;
+}
+
+.book-details-skeleton {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+    gap: 35px;
+}
+
+.book-title-wrapper-skeleton {
+    width: 65%;
+    height: 35px;
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+
+.author-wrapper-skeleton {
+    width: 100%;
+    height: 15px;
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+
+.stats-skeleton {
+    display: flex;
+}
+
+.stat-skeleton {
+    display: flex;
+    flex-direction: column;
+    width: 33.3%;
+    align-items: center;
+    gap: 10px;
+}
+
+.stat-big {
+    width: 60%;
+    height: 40px;
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+.stat-small {
+    width: 80%;
+    height: 10px;
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+
+.tags-skeleton {
+    display: flex;
+    gap: 30px;
+}
+
+.tag-skeleton {
+    width: 70px;
+    height: 25px;
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+
+.details-skeleton {
+    flex: 1;
+    width: 100%;
+    background: rgb(182, 182, 182);
+    border-radius: 2px;
+}
+
+
+
+
+.detail-article {
+    display: none;
     gap: 36px;
     max-width: 1130px;
     width: 100%;
@@ -1230,13 +1338,20 @@ height: 80%;
 
 .book-btns a {
     display: flex;
-    background: var(--primary);
-    color: var(--badge-btn);
+    background: rgb(239, 243, 255);
+    color: #31353a;
     padding: 8px 10px;
     font-size: 12px;
     border-radius: 4px;
-    
+    transition: background 0.3s ease;
+    font-weight: 450;
 }
+
+.book-btns a:hover {
+    background: rgb(199, 210, 243);
+}
+
+
 
 .detail-content {
     padding-top: 10px;
@@ -1255,12 +1370,14 @@ height: 80%;
 .detail-title-wrapper h2 {
     font-size: 3rem;
     font-weight: 600;
-    max-width: 90%;
+    max-width: calc(100% - 105px);
+    font-family: 'DM Serif Display', serif;
+    letter-spacing: 1px;
 }
 
 .save-btn {
     display: flex;
-    padding: 6px 10px;
+    padding: 6px 15px;
     border-radius: 5px;
     border: none;
     background: var(--primary);
@@ -1268,9 +1385,16 @@ height: 80%;
     align-items: center;
     gap: 8px;
     height: 40px;
-    min-width: 102px;
     cursor: pointer;
+    transition: background 0.3s ease;
+    justify-content: center;
 }
+
+.save-btn:hover {
+    background: var(--primary-hover);
+}
+
+
 
 .save-btn i {
     padding-top: 2px;
@@ -1328,6 +1452,7 @@ height: 80%;
     border-radius: 6px;
     font-size: 13px;
     font-weight: 500;
+    user-select: none;
 }
 
 .more-details-container {
@@ -1421,3 +1546,28 @@ height: 80%;
     font-size: 20px;
     cursor: pointer;
 }
+
+#popup-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  #popup-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hidden {
+    display: none;
+  }
