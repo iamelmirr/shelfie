@@ -8,12 +8,98 @@ import { toggleSave } from "./module.js";
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+  await closingOpeningFilterBar()
   await getSearchTermFromUrl()
   await noBooksDisplay()
   loadFromLocalStorage()
   await attachSaveButtonListeners()
   expandFilterContent()
 })
+
+function closingOpeningFilterBar() {
+
+
+const $closeFilters = document.querySelector("[close-filters]")
+const $filterBar = document.querySelector(".filter-bar")
+const $openFilters = document.querySelector("[open-filters]")
+const $filterBarBg = document.querySelector(".filter-bar-background")
+
+$closeFilters.addEventListener("click", () => {
+  $filterBar.classList.remove("open")
+  $filterBar.classList.add("closed")
+
+  $filterBarBg.classList.remove("visible");
+  setTimeout(() => {
+    $filterBarBg.style.display = "none"; 
+  }, 400);
+})
+
+$openFilters.addEventListener("click", () => {
+  $filterBar.classList.remove("closed")
+  $filterBar.classList.add("open")
+
+  $filterBarBg.style.display = "flex"; 
+  setTimeout(() => {
+    $filterBarBg.classList.add("visible");
+  }, 10);
+})
+
+
+const updateFilterBarBgVisibility = () => {
+  if (window.innerWidth >= 992) {
+    
+    $filterBarBg.classList.remove("visible");
+    $filterBarBg.style.display = "none";
+  } else if ($filterBar.classList.contains("open")) {
+    
+    $filterBarBg.style.display = "block";
+    setTimeout(() => {
+      $filterBarBg.classList.add("visible");
+    }, 10); 
+  }
+};
+
+
+window.addEventListener("resize", updateFilterBarBgVisibility);
+
+
+window.addEventListener("load", updateFilterBarBgVisibility);
+
+}
+
+
+const $openFiltersBtn = document.querySelector("[open-filters]");
+const $dummyElement = document.createElement("div"); 
+
+$openFiltersBtn.parentNode.insertBefore($dummyElement, $openFiltersBtn);
+
+let isSticky = false; 
+
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    if (!entry.isIntersecting && !isSticky) {
+      
+      $openFiltersBtn.classList.add("sticky", "visible");
+      isSticky = true;
+    } else if (entry.isIntersecting && isSticky) {
+      
+      $openFiltersBtn.classList.remove("sticky", "visible");
+      isSticky = false;
+    }
+  },
+  {
+    root: null, 
+    threshold: 0.1, 
+  }
+);
+
+
+observer.observe($dummyElement);
+
+
+
+
+
 
 const $noMoreBtn = document.querySelector("[no-more-btn]")
 $noMoreBtn.style.display = "none"
@@ -28,6 +114,8 @@ const renderedBooks = new Set()
 async function getSearchTermFromUrl () {
   const params = new URLSearchParams(window.location.search)
 
+  let numberOfFilters = 0
+
   const category = params.get("category")
   let searchTerm = params.get("search")
   const bookType = params.get("bookType") || null
@@ -40,6 +128,35 @@ async function getSearchTermFromUrl () {
   } else {
     rating = null
   }
+
+  if(bookType) {
+    numberOfFilters += 1
+  }
+
+  if(language) {
+    numberOfFilters +=1
+  }
+
+  if(availability) {
+    numberOfFilters +=1
+  }
+
+  if(price) {
+    numberOfFilters +=1
+  }
+
+  if(rating) {
+    numberOfFilters +=1
+  }
+
+  const $filtersApplied = document.querySelector(".filters-applied")
+
+  if(numberOfFilters === 0) {
+    $filtersApplied.style.display = "none"
+  } else {
+    $filtersApplied.innerHTML = `${numberOfFilters}`
+  }
+
 
   if((!searchTerm || searchTerm.trim() === "") && (!category || category.trim() === "")) {
     searchTerm = "comedy"
@@ -800,13 +917,9 @@ function noBooksDisplay() {
   const booksListItem = document.querySelector(".books-list")
 
   if(booksListItem.innerHTML.trim() === "" ) {
-    const booksContainer = document.querySelector(".books-container")
+    const noBooksContainer = document.querySelector(".no-books-div")
 
-    if (!booksContainer.querySelector(".no-books-div")) {
-      booksContainer.innerHTML += `
-        <div class="no-books-div"><p>There are no books :(</p></div>
-      `;
-    }
+    noBooksContainer.style.display = "block"
   }
 }
 

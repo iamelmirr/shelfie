@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="books-html" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,7 +26,7 @@
 
     <!-- HEADER -->
 
-    <header>
+    <header class="books-header">
 
         <a href="./index.html">
             <img class="header-logo" src="./assets/images/lightlogo2.png" alt="Shelfie">
@@ -58,12 +58,46 @@
 
     </header>
 
+    <div class="mobile-nav">
+      <ul class="mobile-btns">
+        <a href="./books.html" class="mobile-btn mobilemain">
+          <span class="item-icon mainbtn">
+            <span class="fa-solid fa-book mobile-icon"></span>
+          </span>
+          <p>Books</p>
+        </a>
+
+        <a href="/" class="mobile-btn">
+          <span class="item-icon secondary">
+            <span class="fa-solid fa-house mobile-icon"></span>
+          </span>
+          <p>Home</p>
+        </a>
+
+        <a href="./saved-books.html" class="mobile-btn">
+          <span class="item-icon secondary">
+            <span class="fa-solid fa-book-bookmark mobile-icon"></span>
+          </span>
+          <p>Saved</p>
+        </a>
+      </ul>
+    </div>
+
     <main>
         <article class="article">
-            <div class="filter-bar">
+          <div class="filter-bar-background"></div> 
+            <div class="filter-bar closed">
                 <div class="filter-title-wrapper">
-                    <span class="fa-solid fa-filter"></span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                  </svg>
+                  
                     <p>Filters</p>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6" close-filters>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                      
                 </div>
                 <div class="filter-content">
                     <div class="search-wrapper">
@@ -171,11 +205,22 @@
                     <button class="filter-action apply-filters" apply-filters-btn>Apply</button>
                 </div>
             </div>
+           
             <div class="books-container container">
                 <div class="title-wrapper">
                     <h2 class="headline">All Books</h2>
+                    <button open-filters>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                      </svg>
+                      
+                      <p>Filters</p>
+
+                      <span class="filters-applied">3</span>
+
+                    </button>
                 </div>
-                <div class="books-list">
+                <div class="books-list books-bookslist">
                     
                     <div class="skeleton-book">
                         <div class="skeleton-image"></div>
@@ -346,7 +391,9 @@
                     <button class="load-more" load-more-btn>Load More</button>
                     <button class="no-more-btn" no-more-btn>No more books</button>
                   </div>
+                  <div class="no-books-div"><p>There are no books :(</p></div>
             </div>
+            
         </article>
     </main>
 

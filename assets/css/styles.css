@@ -122,10 +122,14 @@ body {
     gap: 1rem;
     background: var(--background);
     color: var(--on-background);
-    padding-block-start: 96px;
+    padding-block-start: 80px;
     min-height: 100vh;
     font-family: 'DM Sans', sans-serif;
+    color: var(--on-background);
 }
+
+
+
 
 
 
@@ -147,6 +151,9 @@ header {
     padding: 0 25px;
     border-bottom: 1px solid rgb(204, 208, 212);
 }
+
+
+
 
 .header-logo {
     height: 3.5rem;
@@ -408,7 +415,6 @@ main {
 .tab-list {
     display: flex;
     width: 100%;
-    padding-inline: 16px;
     margin-inline: auto;
 }
 
@@ -457,34 +463,27 @@ main {
 .tab-panel-4,
 .tab-panel-5{
     display: none;
-    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    column-gap: 17px;
-    row-gap: 18px;
-    grid-auto-columns: minmax(17px, auto);
-    padding-inline: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 12px 8px; 
     width: 100%;
-    place-items: center;
+    justify-content: center;
     
 }
 
 .tab-panel-1 {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    column-gap: 17px;
-    row-gap: 18px;
-    grid-auto-columns: minmax(17px, auto);
-    padding-inline: 16px; 
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 12px 8px;
     width: 100%;
-    place-items: center;
+    justify-content: center;
 }
 
 .card {
     position: relative;
     display: flex;
     flex-direction: column;
+    aspect-ratio: 0.55/1;
     gap: 10px;
-    width: 180px;
-    height: 326px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
@@ -496,15 +495,15 @@ main {
     display: flex;
     position: relative;
     flex-direction: column;
-    width: 180px;
-    height: 304.2px;
+    aspect-ratio: 0.55/1;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     align-items: center;
-    gap: 22px;
+    justify-content: space-between;
     animation: loadingAnimation 1.5s infinite ease-in-out;
+    padding-bottom: 3px;
 }
 
 
@@ -523,8 +522,8 @@ main {
 .skeleton-image {
     display: flex;
     background: rgb(182, 182, 182);
-    width: 160px;
-    height: 235px;
+    width: 100%;
+    height: 83%;
     border-radius: 12px;
 }
 
@@ -532,8 +531,8 @@ main {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: 40px;
-    gap: 10px;
+    padding-left: 10px;
+    gap: 6px;
 }
 
 .skeleton-title {
@@ -554,12 +553,15 @@ main {
     
 }
 
+
+    
+
+
 .skeleton-card {
     display: flex;
     background: rgb(239, 243, 255);
     position: relative;
-    width: 180px;
-    height: 326px;
+    aspect-ratio: 0.55/1;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
@@ -583,7 +585,7 @@ main {
 .img-holder {
     display: flex;
     width: 100%;
-    height: 238px;
+    height: 73%;
     border-radius: 6px;
     overflow: hidden;
     place-items: center;
@@ -602,9 +604,9 @@ main {
 .card-body {
     display: flex;
     flex-direction: column;
-
+    height: 24%;
     padding: 0 7px;
-    flex-grow: 3;
+    justify-content: space-between;
 }
 
 
@@ -623,14 +625,18 @@ main {
     
 }
 
+.title-small a {
+    display: block;
+    width: 100%;
+}
+
 .meta-wrapper {
-    position: absolute;
-    width: 92%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     bottom: 6px;
-    margin-left: 2px;
+    padding: 0 3px;
 
 }
 
@@ -639,7 +645,8 @@ main {
     display: flex;
     gap: 10px;
     align-items: center;
-    max-width: 115px;
+    max-width: 80%;
+    flex: 1;
 }
 
 .icon-btn {
@@ -679,7 +686,7 @@ main {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 125px;
+    max-width: 70%;
     user-select: none;
 }
 
@@ -853,23 +860,51 @@ footer p {
 .filter-bar{
     display: flex;
     flex-direction: column;
-    position: sticky;
-    max-width: 360px;
+    z-index: 200;
+    background: var(--background);
+    position: fixed;
+    max-width: 400px;
     width: 100%;
-    margin-block-start: -16px;
-    margin-block-end: -40px;
     border-right: 1px solid var(--outline);
-    top: 80px;
+    top: 0;
     overflow-y: auto;
-    height: calc(100vh - 80px);
+    height: 100vh;
     scrollbar-width: thin; 
     scrollbar-color: rgba(211, 211, 211, 0.6) transparent;
+    box-shadow: -5px 0 10px rgba(36, 36, 36, 0.3);
+    transition: right 0.4s ease-in-out
+}
+
+.filter-bar.open {
+    right: 0;
+}
+
+.filter-bar.closed {
+    right: -490px;
+}
+
+.filter-bar-background {
+    z-index: 10;
+    display: none;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgb(92, 92, 92);
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.filter-bar-background.visible {
+    opacity: 0.7; 
+    display: flex; 
 }
 
 
 .filter-bar::-webkit-scrollbar {
     height: 6px; 
-    width: 4px; 
+    width: 2px; 
 }
 
 .filter-bar::-webkit-scrollbar-track {
@@ -893,22 +928,34 @@ footer p {
     display: flex;
     color: var(--on-background);
     align-items: center;
-    padding: 24px;
+    padding: 24px 17px;
     gap: 18px;
     font-size: 17px;
 }
 
-.filter-title-wrapper span {
-    display: grid;
-    width: 24px;
-    height: 24px;
+.filter-title-wrapper svg {
+    width: 35px;
+    height: 35px;
     place-items: center;
+    padding: 6px;
 }
 
 .filter-title-wrapper p {
     font-weight: 500;
+    flex: 1;
 }
 
+[close-filters] {
+    display: block;
+    border-radius: 100%;
+    transition: background 0.3s ease;
+    aspect-ratio: 1/1;
+}
+
+[close-filters]:hover {
+    background: var(--alpha-10);
+
+}
 
 
 .filter-content {
@@ -1114,30 +1161,110 @@ footer p {
 .books-container {
     display: flex;
     flex-direction: column;
+    padding-inline: 16px;
 }
 
 .title-wrapper {
+    display: flex;
     width: 100%;
-    padding: 0 15px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .title-wrapper h2 {
-    font-size: 22px;
-    font-weight: 300;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+[open-filters] {
+    position: relative;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    border: none;
+    background: var(--primary-container);
+    gap: 7px;
+    z-index: 7;
+    padding: 10px 14px;
+    border-radius: 4px;
+    color: var(--on-background);
+    font-weight: 500;
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+}
+
+[open-filters].sticky {
+    position: fixed;
+    bottom: -100px; 
+    right: 20px;   
+    z-index: 7;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    background: var(--primary-container);  
+    color: var(--on-background); 
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    opacity: 0;  
+    transform: translateY(-190px);
+    pointer-events: none;
+    transition: opacity 0.6s ease, transform 0.6s ease
+}
+
+[open-filters].sticky.visible {
+    opacity: 1; 
+    visibility: visible; 
+    pointer-events: auto;
+}
+  
+
+
+[open-filters]:hover,
+[open-filters].sticky:hover {
+    background: rgb(230, 230, 230);
+}
+
+[open-filters]:hover .filters-applied {
+    background: rgb(170, 0, 0);
+}
+
+[open-filters] svg {
+    display: grid;
+    width: 20px;
+    height: 20px;
+    place-items: center;
+}
+
+.filters-applied {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    background: rgb(218, 0, 0);
+    color: #ecf4ff;
+    border-radius: 50%; 
+    padding: 0.2em 0.5em; 
+    font-size: 11px;
+    transition: background 0.3s ease;
+    min-width: 20px; 
+    height: 20px; 
+    line-height: 1;  
+    font-weight: bold; 
 }
 
 
 
 .books-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    column-gap: 17px;
-    row-gap: 18px;
-    grid-auto-columns: minmax(17px, auto);
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 12px 8px;
     padding-inline: 16px; 
     width: 100%;
-    place-items: center;
+    justify-content: center;
+}
+
+.books-bookslist {
+    padding-inline: 0;
 }
 
 
@@ -1175,6 +1302,7 @@ footer p {
 }
 
 .no-books-div {
+    display: none;
     width: 100%;
     justify-content: start;
     padding-left: 20px;
@@ -1654,7 +1782,21 @@ height: 80%;
   }
 
 
+    @media (min-width: 600px) {
+        .books-container {
+            padding-inline: 32px;
+        }
+
+        .container {
+            padding-inline: 32px;
+        }
+    }
+
+
+
   @media (min-width: 768px) {
+
+
 
 
     header {
@@ -1663,6 +1805,8 @@ height: 80%;
         height: 80px;
         
     }
+
+    
 
     
     .header-logo {
@@ -1682,6 +1826,11 @@ height: 80%;
     .mobile-nav {
         display: none;
     }
+
+    .books-header {
+        height: 64px;
+    }
+
 
     footer a {
         display: grid;
@@ -1721,6 +1870,24 @@ height: 80%;
         background: #f1f1f1; 
     }
 
+    .books-html::-webkit-scrollbar {
+        width: 0;
+    }  
+    
+    .books-html {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .book-html::-webkit-scrollbar-thumb {
+        background-color: none; 
+        border-radius: none;
+    }
+    
+    .books-html::-webkit-scrollbar-track {
+        background: none; 
+    }
+
     #popup-notification.show {
         
         transform: translateY(0);
@@ -1728,4 +1895,62 @@ height: 80%;
     
   }
 
-  
+  @media (min-width: 992px) {
+    .books-body {
+        padding-block-start: 96px;
+    }
+
+    .books-header {
+        height: 80px;
+    }
+
+    .filter-bar {
+        height: calc(100vh - 80px);
+    }
+
+    .books-html {
+        overflow-y: auto;
+    }
+
+    .books-html::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    .books-html{
+        -ms-overflow-style: auto;
+        scrollbar-width: auto;
+    }
+
+    .books-html::-webkit-scrollbar-thumb {
+        background-color: #ccc; 
+        border-radius: 4px;
+    }
+    
+    .books-html::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+
+    .filter-bar {
+    position: sticky;
+    top: 80px;
+    margin-block-start: -16px;
+    margin-block-end: -40px;
+    overflow-y: auto;
+    height: calc(100vh - 80px);
+    scrollbar-width: thin; 
+    scrollbar-color: rgba(211, 211, 211, 0.6) transparent;
+    box-shadow: none;
+    }
+
+    [close-filters] {
+        display: none;
+    }
+
+    [open-filters] {
+        display: none;
+    }
+
+    .filter-bar-background.visible {
+        display: none; 
+    }
+  }
