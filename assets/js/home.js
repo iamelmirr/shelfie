@@ -266,6 +266,15 @@ async function topRatedBooks() {
 
 }
 
+
+const searchInputHome = document.getElementById("search-input")
+
+searchInputHome.addEventListener("keydown",(event) => {
+  if(event.key === "Enter") {
+    $searchBtn.click()
+  }
+})
+
 $searchBtn.addEventListener("click", handleSearch)
 
 
