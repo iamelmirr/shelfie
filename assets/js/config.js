@@ -1,4 +1,1 @@
-
-
-
-export const API_KEY = process.env.GOOGLE_BOOKS_API_KEY
+export const API_KEY = window.NETLIFY_GOOGLE_BOOKS_API_KEY
