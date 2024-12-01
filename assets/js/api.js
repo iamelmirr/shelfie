@@ -11,7 +11,7 @@ export async function searchCategoryFromUrl(category) {
 
     const fetchUrl = `${API_URL}subject:${category}`
 
-    const response = await fetch(`${fetchUrl}&maxResults=40&key=${API_KEY}`)
+    const response = await fetch(`${fetchUrl}&maxResults=40`)
 
     const data = await response.json()
 
@@ -50,7 +50,7 @@ export async function searchBooksFromInput(query, bookType, language, price, ava
         (language ? `&langRestrict=${language}` : "") + 
         (price ? `$filter=${price}` : "");
     
-    const response = await fetch(`${fetchUrl}&maxResults=40&key=${API_KEY}`);
+    const response = await fetch(`${fetchUrl}&maxResults=40`);
     const data = await response.json();
 
     let books = [];
@@ -103,7 +103,7 @@ export async function searchBooksFromInput(query, bookType, language, price, ava
 export async function searchBooks(query) {
     
     
-    const response = await fetch(`${API_URL}subject:${query}&orderBy=relevance&maxResults=17&key=${API_KEY}`)
+    const response = await fetch(`${API_URL}subject:${query}&orderBy=relevance&maxResults=17`)
     
     
 
@@ -143,7 +143,7 @@ export async function searchBooks(query) {
 export async function tabBooks(category) {
     
     
-    const response = await fetch(`${API_URL}subject:${category}&maxResults=30&key=${API_KEY}`)
+    const response = await fetch(`${API_URL}subject:${category}&maxResults=30`)
     
     
 
@@ -178,7 +178,7 @@ export async function tabBooks(category) {
 
 export async function latestReleasesBooks() {
     
-    const response = await fetch(`${API_URL}subject:general&orderBy=newest&maxResults=10&key=${API_KEY}`)
+    const response = await fetch(`${API_URL}subject:general&orderBy=newest&maxResults=10`)
 
     const data = await response.json()
 
@@ -218,7 +218,7 @@ const authors = [
 
 
   async function fetchBooksByAuthor(author) {
-    const url = `${API_URL}${author}&maxResults=10&key=${API_KEY}`;
+    const url = `${API_URL}${author}&maxResults=10`;
 
     const response = await fetch(url);
     const data = await response.json();
@@ -282,7 +282,7 @@ export async function fetchBooksByUrlId(bookId) {
 export async function fetchBooksByIds(bookIds) {
 
     const fetchBooks = bookIds.map(id =>
-        fetch(`${API_URL_ID_FETCH}${id}?key=${API_KEY}`).then(response => response.json())
+        fetch(`${API_URL_ID_FETCH}${id}`).then(response => response.json())
     )
 
     const booksData = await Promise.all(fetchBooks)
