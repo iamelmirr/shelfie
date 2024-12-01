@@ -266,7 +266,7 @@ export async function chooseTopBooks() {
 
 export async function fetchBooksByUrlId(bookId) {
 
-    const url = `${API_URL_ID_FETCH}${bookId}?key=${API_KEY}`
+    const url = `${API_URL_ID_FETCH}${bookId}`
 
     const response = await fetch(url)
 
