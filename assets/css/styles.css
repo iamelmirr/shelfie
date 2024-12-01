@@ -431,14 +431,13 @@ main {
     font-weight: 500;
     position: relative;
     color: var(--on-background-variant);
-    transition: background-color 0.3s ease;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, background 0.3s ease;
     place-items: center;
     height: 71px;
 }
 
 .tab-list button:hover {
-    background: rgb(221, 221, 221);
+    background: var(--alpha-10);
 }
 
 
@@ -496,7 +495,6 @@ main {
     border: 1px solid transparent;
     max-height: 550px;
     height: auto;
-    overflow: hidden;
 }
 
 .card:hover .img-holder {
