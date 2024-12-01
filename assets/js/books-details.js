@@ -72,8 +72,8 @@ async function fetchBookDetails () {
             const emptyStars = 5 - fullStars - halfStar
 
             starsContainer.innerHTML = '<i class="fa-solid fa-star" style="color: gold;"></i>'.repeat(fullStars) +
-            (halfStar ? '<i class="fa-solid fa-star-half-alt" style="color: gold;"></i>' : '') +
-            '<i class="fa-solid fa-star" style="color: rgb(221, 221, 221);"></i>'.repeat(emptyStars);
+            (halfStar ? '<i class="fa-solid fa-star-half-alt" style="color: gold;;"></i>' : '') +
+            '<i class="fa-solid fa-star" style="color: var(--alpha-20);"></i>'.repeat(emptyStars);
         }
         
         displayStars(averageRating || 0)
