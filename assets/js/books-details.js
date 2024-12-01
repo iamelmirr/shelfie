@@ -1,3 +1,5 @@
+"use strict"
+
 import { fetchBooksByUrlId } from "./api.js"
 import { isSaved, toggleSave } from "./module.js"
 
@@ -112,7 +114,7 @@ async function fetchBookDetails () {
         document.querySelector(".book-author").textContent =  authors ? authors.join(", ") : "Unknown Author"
         document.querySelector("#publisher").textContent = publisher || "Unknown Publisher"
         document.querySelector("#published-date").textContent = publishedDate || "Unknown Date"
-        document.querySelector("#description-span").textContent = stripHtmlTags(description) || "No Descriptiopn Available"
+        document.querySelector("#description-span").textContent = description ? stripHtmlTags(description) : "No Description Available"
         document.querySelector("[number-of-pages]").textContent = pageCount || "N/A"
         document.querySelector("[isebook]").textContent = isEbook
         document.querySelector("#lang-span").textContent = languageMap[language] || "Unknown"

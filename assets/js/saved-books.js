@@ -1,8 +1,8 @@
 "use strict"
 
 import { fetchBooksByIds } from "./api.js"
-import { isSaved } from "./module.js"
-import { toggleSave } from "./module.js"
+import { isSaved, toggleSave } from "./module.js"
+
 
 
 document.addEventListener("DOMContentLoaded", async function savedBooks() {
