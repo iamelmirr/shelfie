@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 
 
-//async function loadTabs (){
+async function loadTabs (){
 
     $tabPanels.forEach(async (panel) => {
     const tabCategory = panel.getAttribute("category")

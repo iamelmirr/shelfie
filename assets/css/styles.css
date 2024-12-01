@@ -283,7 +283,7 @@ main {
 .banner-card {
     display: flex;
     flex-direction: column;
-    background-image: url(../images/widebackgroundv2.png);
+    background-image: url(../images/2ndbannerfinal.png);
     background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -298,31 +298,35 @@ main {
 .banner-card h1 {
     font-family: 'DM Serif Display', serif;
     font-weight: 350;
-    font-size: 6rem;
+    font-size: 3.6rem;
     color: aliceblue;
     user-select: none;
     text-align: center;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
 }
 
 .banner-card p {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: aliceblue;
     letter-spacing: 0.1rem;
     user-select: none;
     text-align: center;
+    font-weight: 500;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4)
 }
 
 .search-wrap {
     display: flex;
     position: relative;
     width: 90%;
-    max-width: 800px;
-    height: 72px;
+    max-width: 480px;
+    height: 56px;
     border-radius: 5px;
     background: rgb(239, 243, 255);
     align-items: center;
     gap: 20px;
     transition: background 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 .search-wrap:hover {
@@ -360,15 +364,16 @@ main {
 
 .search-btn {
     position: absolute;
-    display: grid;
+    display: flex;
     background: var(--primary);
     border: none;
     border-radius: 5px;
     top: 4px;
     right: 4px;
-    width: 80px;
-    height: 64px;
-    place-items: center;
+    width: 50px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
     transition: background 0.3s ease;
 }
 
@@ -377,9 +382,9 @@ main {
 }
 
 .search-btn span {
+    padding-right: 16px;
     font-size: 18px;
     text-align: center;
-    margin-right: 18px;
     color: rgb(247, 251, 255);
 }
 
@@ -488,7 +493,12 @@ main {
     border-bottom-right-radius: 8px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    transition: background-color 0.3s ease
+    transition: background-color 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.card:hover .img-holder {
+    border: 1px solid rgb(161, 161, 161);
 }
 
 .skeleton-book {
@@ -590,6 +600,8 @@ main {
     overflow: hidden;
     place-items: center;
     justify-content: center;
+    border: 1px solid transparent;
+    transition: border 0.3s ease;
 }
 
 .img-holder img {
@@ -636,7 +648,7 @@ main {
     justify-content: space-between;
     align-items: center;
     bottom: 6px;
-    padding: 0 3px;
+    padding: 0 0 2px 5px;
 
 }
 
@@ -652,9 +664,7 @@ main {
 .icon-btn {
     display: flex;
     justify-content: center;
-    align-items: center;
     border: none;
-    background: none;
     padding: 5px;
     cursor: pointer;
     place-items: center;
@@ -663,6 +673,7 @@ main {
     aspect-ratio: 1/1;
     height: 33px;
     transition: background 0.3s ease;
+    
 }
 
 .icon-btn:hover {
@@ -821,8 +832,9 @@ main {
 
 footer {
     display: flex;
+    flex-direction: column;
     height: 70px;
-    padding: 1rem 4rem;
+    padding: 1rem 1rem;
     border-top: 1px solid var(--outline);
     justify-content: space-between;
     align-items: center;
@@ -832,16 +844,24 @@ footer {
 
 footer img {
     display: none;
-    height: 48px;
+    height: 40px;
 }
 
-footer a {
-    display: none;
-}
 
 footer p {
     font-size: 1.3rem;
     user-select: none;
+}
+
+.powered-by {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.powered-by img {
+    display: grid;
+    height: 20px;
 }
 
 
@@ -1321,7 +1341,17 @@ footer p {
 
 /* BOOK DETAILS  */
 
+.details-header {
+    height: 72px;
+}
 
+.details-header .main-nav {
+    display: none;
+}
+
+.details-header .header-part .savedlink {
+    display: none;
+}
 
 #details-main {
     margin-top: 30px;
@@ -1439,31 +1469,33 @@ footer p {
 
 .detail-article {
     display: none;
-    gap: 36px;
+    flex-direction: column;
+    gap: 20px;
     max-width: 1130px;
     width: 100%;
     height: 100%;
+    padding-inline: 16px;
 }
 
 .book-img {
-    position: sticky;
-    top: 130px;
-    width: 40%;
-    height: calc(100vh - 140px);
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 40px;
+    width: 100%;
+    gap: 20px;
     overflow-y: auto;
+    
 }
 
 .book-img img {
-height: 80%;
+aspect-ratio: 12/16;
+margin-inline: 46px;
 }
 
 .book-btns {
     display: flex;
-    gap:15px;
+    justify-content: space-between;
+    padding: 0 10px;
 }
 
 .book-btns a {
@@ -1475,6 +1507,7 @@ height: 80%;
     border-radius: 4px;
     transition: background 0.3s ease;
     font-weight: 450;
+    text-align: center;
 }
 
 .book-btns a:hover {
@@ -1488,13 +1521,14 @@ height: 80%;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 18px;
 }
 
 .detail-title-wrapper {
     display: flex;
     gap: 20px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .detail-title-wrapper h2 {
@@ -1654,27 +1688,35 @@ height: 80%;
     font-size: 2.5rem;
     font-weight: 500;
     text-align: start;
-    margin-left: 25px;
+    
 }
+
+
 
 
 .saved-books-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
-    column-gap: 14px;
-    row-gap: 18px;
-    grid-auto-columns: minmax(14px, auto); 
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 12px 8px;
     width: 100%;
-    place-items: center; 
+    justify-content: center;
 }
 
 .fa-circle-xmark {
-    color: rgb(45, 64, 128);
+    color: rgb(248, 81, 81);
     position: absolute;
     right: -6px;
     top: -6px;
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
+    background: white;
+    border-radius: 100%;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.fa-circle-xmark:hover {
+    color: rgb(172, 6, 6);
+    background: rgb(209, 209, 209);
 }
 
 #popup-notification {
@@ -1765,20 +1807,31 @@ height: 80%;
 
 
 
+@media (min-width: 390px) {
+    footer {
+        flex-direction: row;
+    }
+}
+
 
 
   @media (min-width: 450px) {
     .tab-list button {
         font-size: 14px;
     }
+
+    footer {
+        padding: 1rem 4rem;
+    }
+
+    .book-btns {
+        justify-content: center;
+        gap: 25px;
+    }
   }
 
   @media (min-width: 500px) {
-    .search-btn {
-        
-        width: 100px;
-        
-    }
+    
   }
 
 
@@ -1790,6 +1843,29 @@ height: 80%;
         .container {
             padding-inline: 32px;
         }
+
+        .search-wrap{
+            height: 72px;
+        }
+
+        .search-btn {
+            height: 64px;
+            width: 100px;
+        }
+
+        .book-img {
+            align-items: start;
+            max-width: 420px;
+        }
+
+        .book-img img {
+            width: 80%;
+            margin-inline: 0;
+        }
+
+        .detail-article {
+            padding-inline: 32px;
+        }
     }
 
 
@@ -1797,7 +1873,14 @@ height: 80%;
   @media (min-width: 768px) {
 
 
-
+    .details-header .main-nav {
+        display: flex;
+    }
+    
+    .details-header .header-part .savedlink {
+        display: flex;
+    }
+    
 
     header {
         
@@ -1892,10 +1975,37 @@ height: 80%;
         
         transform: translateY(0);
       }
+
+      .saved-books-main {
+        margin-top: 20px;
+      }
+
+      .saved-books-main h2 {
+        margin-left: 10px;
+      }
     
   }
 
   @media (min-width: 992px) {
+
+    .detail-article {
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    .book-img {
+        position: sticky;
+        top: 110px;
+        height: calc(100vh - 240px);
+        width: 44%;
+        align-items: center;
+    }
+
+    .book-img img {
+        width: 80%;
+    }
+
+
     .books-body {
         padding-block-start: 96px;
     }
@@ -1953,4 +2063,34 @@ height: 80%;
     .filter-bar-background.visible {
         display: none; 
     }
+
+    .search-wrap {
+        max-width: 800px;
+    }
+
+    .banner-card h1 {
+        font-size: 5.7rem;
+    }
+
+    .banner-card p {
+        font-size: 14px;
+        
+    }
+
+    .details-header {
+        height: 80px;
+    }
+  }
+
+
+  @media (min-width: 1050px) {
+    .banner-card{
+        background-image: url(../images/widebackgroundv2.png);
+    }
+
+    .banner-card p {
+        font-weight: 400;
+        color: hsl(0, 0%, 89%);
+    }
+    
   }
