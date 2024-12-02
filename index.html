@@ -2,26 +2,30 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+    <!-- Title of the webpage -->
     <title>Shelfie - Reading made easy.</title>
-
+    <!-- Favicon for the website -->
     <link rel="shortcut icon" href="./scuticon.svg" type="image/svg+xml">
 
+    <!-- Preconnect to Google Fonts for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font awesome CDN and Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Serif+Display&display=swap"
-        rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
 
-
+    <!-- Link to the main stylesheet for the website -->
     <link rel="stylesheet" href="./assets/css/styles.css">   
     
-    
-    
+    <!-- JavaScript modules-->
     <script type="module" src="./assets/js/api.js"></script>
     <script type="module" src="./assets/js/config.js"></script>
 
@@ -29,7 +33,9 @@
 </head>
 <body>
 
-    <!-- HEADER -->
+
+
+    <!-- HEADER SECTION -->
 
     <header>
 
@@ -52,7 +58,6 @@
         <div class="header-part">
         <button class="themebtn" theme-btn>
           <span class="fa-regular fa-moon"></span>
-          <!-- <span class="fa-regular fa-sun"></span> -->
         </button>
 
         <a class="savedlink" href="saved-books.html">
@@ -62,6 +67,10 @@
     </div>
 
     </header>
+
+
+
+    <!-- Mobile navigation bar, visible only on smaller screens -->
 
     <div class="mobile-nav">
       <ul class="mobile-btns">
@@ -87,6 +96,11 @@
         </a>
       </ul>
     </div>
+
+
+
+    <!-- MAIN SECTION -->
+
 
     <main>
 
@@ -861,6 +875,13 @@
             </div>
         </div>
     </section>
+
+
+
+    <!-- SLIDER SECTION -->
+
+
+
     <section class="slider-section">
         <div class="slider-1">
             <h2>Latest Releases</h2>
@@ -1076,6 +1097,11 @@
             </ul>
         </div>
 
+
+
+        <!-- TAGS SECTION -->
+
+
         <div class="preference">
             <h2>Select your book genre.</h2>
             <p>Choosing the right genre can open up a world of stories that resonate with your interests and imagination.</p>
@@ -1126,6 +1152,9 @@
 </main>
 
 
+<!-- FOOTER -->
+
+
 <footer>
     <p>Copyright 2024 Elmo&Azra</p>
     <a href="/">
@@ -1138,9 +1167,11 @@
   </div>
 </footer>
     
-
+<!-- Notification alert -->
 <div id="popup-notification" class="hidden"></div>
 
+
+<!-- Connected JavaScript -->
 <script src="./assets/js/theme.js"></script>
 <script type="module" src="./assets/js/home.js"></script>
 </body>
