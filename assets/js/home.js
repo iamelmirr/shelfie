@@ -2,13 +2,12 @@
 
 import { searchBooks } from "./api.js"
 
-import { attachBookEventListener } from "./module.js"
 
-import { isSaved } from "./module.js"
+import { isSaved, toggleSave, attachBookEventListener, createBookCard } from "./module.js"
 
-import { toggleSave } from "./module.js"
 
-import { attachSaveButtonListener } from "./module.js"
+
+
  
 const $tabBtns = document.querySelectorAll("[data-tab-btn]")
 const $tabPanels = document.querySelectorAll("[data-panel]")
@@ -35,39 +34,9 @@ async function loadTabs (){
     panel.innerHTML = ''
 
     books.forEach(book => {
-        const bookCard = `
-        <div class="card" data-id="${book.id}">
 
-                  <figure class="card-media img-holder">
-                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                      class="img-cover">
-                  </figure>
-
-                  <div class="card-body">
-
-                    <h3 class="title-small">
-                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                    </h3>
-
-                    <div class="meta-wrapper">
-
-                      <div class="meta-item">
-                        <span class="fa-solid fa-pen"></span>
-
-                        <span class="label-medium">${book.authors}</span>
-                      </div>
-
-                        <button class="icon-btn has-state     removed" savebtn aria-label="Add to saved books">
-                          ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
-                        </button>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                  
-        `
+        const bookCard = createBookCard(book.id, book.image, book.title, book.authors)
+        
         panel.innerHTML += bookCard
 
         
@@ -139,43 +108,12 @@ async function latestReleases() {
   latestReleasesSlider.innerHTML = ``
 
   books.forEach(book => {
-    const bookCard = 
-    `
-    <li class="slider-item">
-    <div class="card" data-id="${book.id}">
+    const bookCard = createBookCard(book.id, book.image, book.title, book.authors)
+    const sliderBook = document.createElement("li")
+    sliderBook.classList.add("slider-item")
+    sliderBook.innerHTML = bookCard
 
-                  <figure class="card-media img-holder">
-                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                      class="img-cover">
-                  </figure>
-
-                  <div class="card-body">
-
-                    <h3 class="title-small">
-                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                    </h3>
-
-                    <div class="meta-wrapper">
-
-                      <div class="meta-item">
-                        <span class="fa-solid fa-pen"></span>
-
-                        <span class="label-medium">${book.authors}</span>
-                      </div>
-
-                        <button class="icon-btn has-state     removed" savebtn aria-label="Add to saved books">
-                          ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
-                        </button>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                </li>
-        `
-
-        latestReleasesSlider.innerHTML += bookCard
+        latestReleasesSlider.appendChild(sliderBook)
         const bookElement = latestReleasesSlider.lastElementChild
         attachBookEventListener(bookElement, latestReleasesSlider)
 
@@ -209,41 +147,12 @@ async function topRatedBooks() {
   ratingsSlider.innerHTML = ``
 
   books.forEach(book => {
-    const bookCard = `
-      <li class="slider-item">
-    <div class="card" data-id="${book.id}">
+    const bookCard = createBookCard(book.id, book.image, book.title, book.authors)
+    const sliderBook = document.createElement("li")
+    sliderBook.classList.add("slider-item")
+    sliderBook.innerHTML = bookCard
 
-                  <figure class="card-media img-holder">
-                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                      class="img-cover">
-                  </figure>
-
-                  <div class="card-body">
-
-                    <h3 class="title-small">
-                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                    </h3>
-
-                    <div class="meta-wrapper">
-
-                      <div class="meta-item">
-                        <span class="fa-solid fa-pen"></span>
-
-                        <span class="label-medium">${book.authors}</span>
-                      </div>
-
-                        <button class="icon-btn has-state     removed" savebtn aria-label="Add to saved books">
-                          ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
-                        </button>
-
-                    </div>
-
-                  </div>
-
-                </div>
-                </li>
-    `
-    ratingsSlider.innerHTML += bookCard
+    ratingsSlider.appendChild(sliderBook)
     const bookElement = ratingsSlider.lastElementChild
     attachBookEventListener(bookElement, ratingsSlider)
 

@@ -1,7 +1,7 @@
 "use strict"
 
 import { fetchBooksByIds } from "./api.js"
-import { isSaved, toggleSave } from "./module.js"
+import { isSaved, toggleSave, createBookCard } from "./module.js"
 
 
 
@@ -23,41 +23,18 @@ async function displaySavedBooks() {
 
 
     booksData.forEach(book => {
-        const bookCard = `
-            <div class="card" data-id="${book.id}">
-                  <span class="unsave-icon fa-solid fa-circle-xmark"></span>  
-                  <figure class="card-media img-holder">
-                    <img src="${book.image}" width="200" height="200" loading="lazy" alt="Book name"
-                      class="img-cover">
-                  </figure>
+        
+        const bookCard = createBookCard(book.id, book.image, book.title, book.authors)
 
-                  <div class="card-body">
-
-                    <h3 class="title-small">
-                      <a href="./book-details.html?id=${book.id}" class="card-link">${book.title}</a>
-                    </h3>
-
-                    <div class="meta-wrapper">
-
-                      <div class="meta-item">
-                        <span class="fa-solid fa-pen"></span>
-
-                        <span class="label-medium">${book.authors}</span>
-                      </div>
-                        <button class="icon-btn has-state removed" removesaved savebtn aria-label="Add to saved books">
-                          ${isSaved(book.id) ? `<span class="fa-solid fa-bookmark"></span>` : `<span class="fa-regular fa-bookmark"></span>` }
-                        </button>
-                        
-
-                    </div>
-
-                  </div>
-
-                  
-
-                </div>
-        `
         savedBooksContainer.innerHTML += bookCard
+
+        const xMark = document.createElement("span")
+        xMark.classList.add("unsave-icon", "fa-solid",  "fa-circle-xmark")
+        
+        const bookElement = savedBooksContainer.lastElementChild
+
+        bookElement.appendChild(xMark)
+
     })
 
     emptyPage ()

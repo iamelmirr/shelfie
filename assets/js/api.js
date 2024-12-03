@@ -1,15 +1,17 @@
 "use strict"
 
 
-import { API_KEY } from "./config.js"
+
 
 const API_URL = 'https://www.googleapis.com/books/v1/volumes?q='
 const API_URL_ID_FETCH = 'https://www.googleapis.com/books/v1/volumes/'
+const API_KEY = window.NETLIFY_GOOGLE_BOOKS_API_KEY
+
 
 
 export async function searchCategoryFromUrl(category) {
 
-    const fetchUrl = `${API_URL}subject:${category}`
+    const fetchUrl = `${API_URL}subject:${category}&key=${API_KEY}`
 
     const response = await fetch(`${fetchUrl}&maxResults=40`)
 
