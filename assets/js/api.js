@@ -11,6 +11,9 @@ const API_KEY = window.NETLIFY_GOOGLE_BOOKS_API_KEY
 
 export async function searchCategoryFromUrl(category) {
 
+    console.log('API Key:', window.NETLIFY_GOOGLE_BOOKS_API_KEY);
+
+
     const fetchUrl = `${API_URL}subject:${category}`
 
     const response = await fetch(`${fetchUrl}&maxResults=40&key=${API_KEY}`)
